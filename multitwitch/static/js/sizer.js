@@ -6,8 +6,8 @@ function optimize_size(n) {
     var best_width = 0;
     for (var per_row = 1; per_row <= n; per_row++) {
         var num_rows = Math.ceil(n / per_row);
-        var max_width = Math.floor(width / per_row);
-        var max_height = Math.floor(height / num_rows);
+        var max_width = Math.floor(width / per_row) - 4;
+        var max_height = Math.floor(height / num_rows) - 4;
         if (max_width * 9/16 + 30 < max_height) {
             max_height = max_width * 9/16 + 30;
         } else {
