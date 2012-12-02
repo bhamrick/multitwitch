@@ -1,5 +1,6 @@
 body {
     background: black;
+    font: 13px arial, sans-serif;
 }
 
 #wrapper {
@@ -25,4 +26,13 @@ body {
 
 #helpbox a:hover {
     text-decoration: underline;
+}
+
+#helptext {
+    margin: 10px;
+}
+
+#credits {
+    text-align: right;
+    font-size: small;
 }
