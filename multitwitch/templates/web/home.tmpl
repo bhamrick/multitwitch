@@ -6,20 +6,10 @@
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/mustache.js"></script>
 <script type="text/javascript" src="/static/js/multitwitch.js"></script>
-<script id="helpTmpl" type="text/template">
-<div class="helpbox">
-<h1>MultiTwitch.tv</h1>
-Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="http://multitwitch.tv/siglemic/cosmowright">multitwitch.tv/siglemic/cosmowright</a>. Multitwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. Happy streamwatching!
-
-Created by Brian Hamrick
-</div>
-</script>
 <script type="text/javascript">
 $(document).ready(function() {
     if ({{ nstreams }} == 0) {
-        var template = $("#helpTmpl").html();
-        var html = Mustache.to_html(template, {});
-        $("#wrapper").html(html);
+        $("#helpbox").css('display','block');
     }
     optimize_size({{ nstreams }});
 });
@@ -35,6 +25,14 @@ $(window).resize(function() {
 <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
 
 {% endfor %}
+
+<div class="helpbox">
+<h1>MultiTwitch.tv</h1>
+Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="http://multitwitch.tv/siglemic/cosmowright">multitwitch.tv/siglemic/cosmowright</a>. Multitwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. Happy streamwatching!
+
+Created by Brian Hamrick
+</div>
+
 </div>
 </body>
 </html>

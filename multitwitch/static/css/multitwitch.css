@@ -9,4 +9,5 @@ body {
 .helpbox {
     text-align: center;
     color: white;
+    display: none;
 }
