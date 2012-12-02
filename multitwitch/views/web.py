@@ -5,4 +5,4 @@ class WebView:
     def home(request):
         streams = request.matchdict['streams']
         return {'project' : 'multitwitch',
-                'args' : 'streams'}
+                'args' : streams}
