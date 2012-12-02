@@ -13,6 +13,7 @@ function optimize_size(n) {
         } else {
             max_width = (max_height - 30) * 16/9;
         }
+        alert("" + per_row + " : " + max_height + " x " + max_width);
         if (max_width > best_width) {
             best_width = max_width;
             best_height = max_height;
