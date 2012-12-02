@@ -10,4 +10,9 @@ body {
     text-align: center;
     color: white;
     display: none;
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid white;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
 }
