@@ -5,8 +5,15 @@
 <link rel="stylesheet" type="text/css" href="/static/css/multitwitch.css" />
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/mustache.js"></script>
-<script type="text/javascript" src="/static/js/sizer.js"></script>
-<script id="helpTmpl" type="text/template" src="/static/js/templates/help.tmpl"></script>
+<script type="text/javascript" src="/static/js/multitwitch.js"></script>
+<script id="helpTmpl" type="text/template">
+<div class="helpbox">
+<h1>MultiTwitch.tv</h1>
+Welcome to MultiTwitch! You can use this site to watch any number of <a>twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a>multitwitch.tv/siglemic/cosmowright</a>. Multitwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. Happy streamwatching!
+
+Created by Brian Hamrick
+</div>
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
     if ({{ nstreams }} == 0) {
