@@ -7,10 +7,10 @@
 <script type="text/javascript" src="/static/js/sizer.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    optimize_size({{ len(streams) }});
+    optimize_size({{ nstreams }});
 }
 $(document).resize(function() {
-    optimize_size({{ len(streams) }});
+    optimize_size({{ nstreams }});
 }
 </script>
 </head>
