@@ -21,5 +21,5 @@ function optimize_size(n) {
     }
     $(".stream").height(best_height);
     $(".stream").width(best_width);
-    $("#wrapper").css("padding", wrapper_padding, 0);
+    $("#wrapper").css("padding-top", wrapper_padding);
 }
