@@ -4,9 +4,16 @@
 <title>{{ project }}</title>
 <link rel="stylesheet" type="text/css" href="/static/css/multitwitch.css" />
 <script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/mustache.js"></script>
 <script type="text/javascript" src="/static/js/sizer.js"></script>
+<script id="helpTmpl" type="text/template" src="/static/templates/js/help.tmpl"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    if ({{ nstreams }} == 0) {
+        var template = $("#helpTmpl").html();
+        var html = Mustache.to_html(template, {});
+        $("#wrapper").html(html);
+    }
     optimize_size({{ nstreams }});
 });
 $(window).resize(function() {
