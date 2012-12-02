@@ -20,6 +20,7 @@ body {
 
 #helpbox a {
     color: #e76118;
+    text-decoration: none;
 }
 
 #helpbox a:hover {
