@@ -1,6 +1,6 @@
 function optimize_size(n) {
     var height = $(window).innerHeight();
-    var width = $(window).innerWidth();
+    var width = $("#wrapper").width();
     alert("" + height + " x " + width);
     var best_height = 0;
     var best_width = 0;
