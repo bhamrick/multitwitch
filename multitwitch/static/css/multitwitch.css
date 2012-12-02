@@ -5,3 +5,8 @@ body {
 #wrapper {
     text-align: center;
 }
+
+.helpbox {
+    text-align: center;
+    color: white;
+}
