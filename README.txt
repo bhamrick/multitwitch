@@ -1,14 +1,4 @@
-websplit README
-==================
-
-Getting Started
----------------
-
-- cd <directory containing this file>
-
-- $venv/bin/python setup.py develop
-
-- $venv/bin/populate_websplit development.ini
-
-- $venv/bin/pserve development.ini
-
+This is a base for creating a pyramid-based heroku app. Setting it up
+essentially involves replacing APPNAME with your desired application name
+everywhere. This code is free to use however you'd like, don't ask me for
+permission. If you find some issues with it, report them to bhamrick AT mit.edu
