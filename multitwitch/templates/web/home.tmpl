@@ -8,12 +8,14 @@
 <script type="text/javascript" src="/static/js/multitwitch.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    absolute_center($("#helpbox"));
     if ({{ nstreams }} == 0) {
         $("#helpbox").css('display','block');
     }
     optimize_size({{ nstreams }});
 });
 $(window).resize(function() {
+    absolute_center($("#helpbox"));
     optimize_size({{ nstreams }});
 });
 </script>
@@ -29,7 +31,7 @@ $(window).resize(function() {
 <div id="helpbox">
 <h1>MultiTwitch.tv</h1>
 <div id="helptext">
-Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="http://multitwitch.tv/siglemic/cosmowright">multitwitch.tv/siglemic/cosmowright</a>. MultiTwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. Happy streamwatching!
+Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="http://multitwitch.tv/siglemic/cosmowright">multitwitch.tv/siglemic/cosmowright</a>. MultiTwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. For the curious, the source of this page is available at <a href="https://github.com/bhamrick/multitwitch">github.com/bhamrick/multitwitch</a>. Happy streamwatching!
 </div>
 
 <div id="credits">

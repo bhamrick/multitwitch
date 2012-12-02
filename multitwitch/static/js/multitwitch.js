@@ -23,3 +23,15 @@ function optimize_size(n) {
     $(".stream").width(best_width);
     $("#wrapper").css("padding-top", wrapper_padding);
 }
+
+function absolute_center(object) {
+    var window_height = $(window).innerHeight();
+    var window_width = $(window).innerWidth();
+    var obj_height = object.height();
+    var obj_width = object.width();
+    var pos_x = (window_width - obj_width)/2;
+    var pos_y = (window_height - obj_height)/2;
+    object.css('position', 'absolute');
+    object.css('left', pos_x);
+    object.css('top', pos_y);
+}
