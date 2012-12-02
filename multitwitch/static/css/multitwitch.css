@@ -8,7 +8,7 @@ body {
 }
 
 #helpbox {
-    text-align: center;
+    text-align: justify;
     color: white;
     display: none;
     width: 600px;
@@ -17,6 +17,10 @@ body {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+
+#helpbox h1 {
+    text-align: center;
 }
 
 #helpbox a {
@@ -34,5 +38,6 @@ body {
 
 #credits {
     text-align: right;
-    font-size: small;
+    font-size: 10px;
+    padding-right: 10px;
 }
