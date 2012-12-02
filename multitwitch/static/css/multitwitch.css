@@ -6,7 +6,7 @@ body {
     text-align: center;
 }
 
-.helpbox {
+#helpbox {
     text-align: center;
     color: white;
     display: none;
