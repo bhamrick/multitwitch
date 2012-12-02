@@ -1,2 +1,2 @@
 include *.txt *.ini *.cfg *.rst
-recursive-include websplit *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml
+recursive-include multitwitch *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml
