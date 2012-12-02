@@ -13,6 +13,15 @@ body {
     width: 600px;
     margin: 0 auto;
     border: 1px solid white;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#helpbox a {
+    color: #e76118;
+}
+
+#helpbox a:hover {
+    text-decoration: underline;
 }
