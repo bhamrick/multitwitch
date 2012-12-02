@@ -1,6 +1,7 @@
 function optimize_size(n) {
     var height = $(window).height();
     var width = $(window).width();
+    alert("" + height + " x " + width);
     var best_height = 0;
     var best_width = 0;
     for (var per_row = 1; per_row <= n; per_row++) {
