@@ -3,6 +3,7 @@ function optimize_size(n) {
     var width = $("#wrapper").width();
     var best_height = 0;
     var best_width = 0;
+    var wrapper_padding = 0;
     for (var per_row = 1; per_row <= n; per_row++) {
         var num_rows = Math.ceil(n / per_row);
         var max_width = Math.floor(width / per_row) - 4;
@@ -15,8 +16,10 @@ function optimize_size(n) {
         if (max_width > best_width) {
             best_width = max_width;
             best_height = max_height;
+            wrapper_padding = (height - num_rows * max_height)/2;
         }
     }
     $(".stream").height(best_height);
     $(".stream").width(best_width);
+    $("#wrapper").css("padding", wrapper_padding, 0);
 }
