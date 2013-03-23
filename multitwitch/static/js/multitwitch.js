@@ -1,6 +1,17 @@
 var chat_hidden = false;
+var num_streams = -1;
 
 function optimize_size(n) {
+    // Call with n = -1 to use previously known quantity
+    if (n == -1) {
+        if (num_streams == -1) {
+            return;
+        } else {
+            n = num_streams;
+        }
+    }
+    num_streams = n;
+
     // Resize chat
     // height is off by 16 due to body margin
     var height = $(window).innerHeight() - 16;
@@ -62,8 +73,10 @@ function absolute_center(object) {
 
 function hide_chat() {
     chat_hidden = true;
+    optimize_size(-1);
 }
 
 function show_chat() {
     chat_hidden = false;
+    optimize_size(-1);
 }
