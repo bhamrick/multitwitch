@@ -38,6 +38,9 @@ $(document).ready(function() {
 
     // Do this after all the jqueryui setup.
     optimize_size({{ nstreams }});
+    setTimeout(function(){
+        optimize_size({{ nstreams }}
+        }, 500);
 });
 $(window).resize(function() {
     absolute_center($("#helpbox"));
