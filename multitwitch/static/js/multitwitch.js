@@ -52,7 +52,7 @@ function resize_chat() {
     if(!chat_hidden) {
         var chat_width = 304;
         var wrapper_width = $("#wrapper").width();
-        $("#streams").width(wrapper_width - chat_width - 5);
+        $("#streams").width(wrapper_width - chat_width - 10);
         $("#chatbox").width(chat_width);
         $(".stream_chat").height(window_height - 75);
     }
