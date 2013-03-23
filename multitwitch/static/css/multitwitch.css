@@ -60,20 +60,17 @@ body {
     padding-right: 10px;
 }
 
-#bottom_bar {
+#bottom_right_bar {
     height: 1em;
     position: absolute;
-    bottom: 0px;
+    right: 8px;
+    bottom: 8px;
 }
 
-#bottom_right_bar {
-    float: right;
-}
-
-#bottom_bar a {
+#bottom_right_bar a {
     color: white;
 }
 
-#bottom_bar a:hover {
+#bottom_right_bar a:hover {
     text-decoration: none;
 }
