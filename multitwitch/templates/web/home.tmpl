@@ -36,6 +36,11 @@ $(document).ready(function() {
         }
     });
 
+    // Don't show chat for no streams
+    if({{ nstreams }} == 0) {
+        chat_hidden = true;
+    }
+
     // Do this after all the jqueryui setup.
     optimize_size({{ nstreams }});
     setTimeout(function(){
@@ -69,6 +74,7 @@ $(window).resize(function() {
 <iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
 </div>
 {% endfor %}
+</div>
 
 
 <div id="helpbox">

@@ -13,7 +13,10 @@ function optimize_size(n) {
         $("#chatbox").width(chat_width);
         $(".stream_chat").height(height - 75);
     } else {
-        
+        var wrapper_width = $("#wrapper").width();
+        width = wrapper_width;
+        $("#streams").width(width);
+        $("#chatbox").hide();
     }
 
     var best_height = 0;
