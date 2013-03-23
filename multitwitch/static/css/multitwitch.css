@@ -59,3 +59,21 @@ body {
     font-size: 10px;
     padding-right: 10px;
 }
+
+#bottombar {
+    height: 1em;
+    position: absolute;
+    bottom: 0px;
+}
+
+#bottom_right_bar {
+    float: right;
+}
+
+#bottombar a {
+    color: white;
+}
+
+#bottombar a:hover {
+    text-decoration: none;
+}
