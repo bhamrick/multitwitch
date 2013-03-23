@@ -59,3 +59,11 @@ function absolute_center(object) {
     object.css('left', pos_x);
     object.css('top', pos_y);
 }
+
+function hide_chat() {
+    chat_hidden = true;
+}
+
+function show_chat() {
+    chat_hidden = false;
+}

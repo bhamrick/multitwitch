@@ -23,6 +23,7 @@
 $(document).ready(function() {
     absolute_center($("#helpbox"));
     if ({{ nstreams }} == 0) {
+        hide_chat();
         $("#helpbox").css('display','block');
     }
 
@@ -35,11 +36,6 @@ $(document).ready(function() {
             tabs.tabs( "refresh" );
         }
     });
-
-    // Don't show chat for no streams
-    if({{ nstreams }} == 0) {
-        chat_hidden = true;
-    }
 
     // Do this after all the jqueryui setup.
     optimize_size({{ nstreams }});
