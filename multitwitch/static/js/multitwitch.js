@@ -46,10 +46,10 @@ function set_chat_hidden(hidden) {
     // Semi-placeholder
     var window_height = $(window).height();
     if(!hidden) {
-        var chat_width = 350;
+        var chat_width = 320;
         var wrapper_width = $("#wrapper").width()
-        $("#streams").width(wrapper_width - chat_width);
+        $("#streams").width(wrapper_width - chat_width - 5);
         $("#chatbox").width(chat_width);
-        $(".stream_chat").height(window_height - 60);
+        $(".stream_chat").height(window_height - 75);
     }
 }
