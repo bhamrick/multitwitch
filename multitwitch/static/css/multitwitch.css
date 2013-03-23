@@ -64,7 +64,7 @@ body {
     height: 1em;
     position: absolute;
     right: 8px;
-    bottom: 8px;
+    bottom: 16px;
 }
 
 #bottom_right_bar a {
