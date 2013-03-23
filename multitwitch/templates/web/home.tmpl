@@ -36,6 +36,8 @@ $(document).ready(function() {
             tabs.tabs( "refresh" );
         }
     });
+
+    set_chat_hidden(false);
 });
 $(window).resize(function() {
     absolute_center($("#helpbox"));
@@ -45,11 +47,13 @@ $(window).resize(function() {
 </head>
 <body>
 <div id="wrapper">
+<div id="streams">
 {% for stream in streams %}
 
 <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
 
 {% endfor %}
+</div>
 
 <div id="chatbox">
 <ul>
@@ -58,8 +62,8 @@ $(window).resize(function() {
 {% endfor %}
 </ul>
 {% for stream in streams %}
-<div id="chat-{{ stream }}">
-<iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="364" width="400"></iframe>
+<div id="chat-{{ stream }}" class="stream_chat">
+<iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
 </div>
 {% endfor %}
 

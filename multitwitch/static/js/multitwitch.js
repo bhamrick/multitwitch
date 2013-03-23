@@ -1,6 +1,6 @@
 function optimize_size(n) {
     var height = $(window).innerHeight();
-    var width = $("#wrapper").width();
+    var width = $("#streams").width();
     var best_height = 0;
     var best_width = 0;
     var wrapper_padding = 0;
@@ -40,4 +40,16 @@ function absolute_center(object) {
     object.css('position', 'absolute');
     object.css('left', pos_x);
     object.css('top', pos_y);
+}
+
+function set_chat_hidden(hidden) {
+    // Semi-placeholder
+    var window_height = $(window).height();
+    if(!hidden) {
+        var chat_width = 320;
+        var wrapper_width = $("#wrapper").width()
+        $("#streams").width(wrapper_width - chat_width);
+        $("#chatbox").width(chat_width);
+        $(".stream_chat").height(window_height);
+    }
 }

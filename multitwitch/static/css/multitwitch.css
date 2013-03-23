@@ -3,8 +3,18 @@ body {
     font: 13px arial, sans-serif;
 }
 
-#wrapper {
+#streams {
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#chatbox {
+    float: right;
+    width: 320px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #helpbox {
