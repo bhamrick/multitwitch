@@ -6,4 +6,5 @@ class WebView:
         streams = request.matchdict['streams']
         return {'project' : 'multitwitch',
                 'streams' : streams,
+                'unique_streams' : set(streams),
                 'nstreams' : len(streams)}

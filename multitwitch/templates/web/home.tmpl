@@ -61,11 +61,11 @@ $(window).resize(function() {
 
 <div id="chatbox">
 <ul>
-{% for stream in streams %}
+{% for stream in unique_streams %}
 <li><a href="#chat-{{ stream }}">{{ stream }}</a></li>
 {% endfor %}
 </ul>
-{% for stream in streams %}
+{% for stream in unique_streams %}
 <div id="chat-{{ stream }}" class="stream_chat">
 <iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
 </div>
