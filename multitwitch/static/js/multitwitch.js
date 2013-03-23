@@ -46,7 +46,7 @@ function set_chat_hidden(hidden) {
     // Semi-placeholder
     var window_height = $(window).height();
     if(!hidden) {
-        var chat_width = 320;
+        var chat_width = 304;
         var wrapper_width = $("#wrapper").width()
         $("#streams").width(wrapper_width - chat_width - 5);
         $("#chatbox").width(chat_width);
