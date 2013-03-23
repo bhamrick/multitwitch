@@ -1,6 +1,7 @@
 body {
     background: black;
     font: 13px arial, sans-serif;
+    margin: 8px;
 }
 
 #streams {

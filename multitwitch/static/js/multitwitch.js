@@ -2,7 +2,8 @@ var chat_hidden = false;
 
 function optimize_size(n) {
     // Resize chat
-    var height = $(window).innerHeight();
+    // height is off by 16 due to body margin
+    var height = $(window).innerHeight() - 16;
     var width = $("#streams").width();
     if(!chat_hidden) {
         var chat_width = 304;
