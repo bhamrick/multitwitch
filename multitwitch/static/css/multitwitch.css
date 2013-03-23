@@ -60,7 +60,7 @@ body {
     padding-right: 10px;
 }
 
-#bottombar {
+#bottom_bar {
     height: 1em;
     position: absolute;
     bottom: 0px;
@@ -70,10 +70,10 @@ body {
     float: right;
 }
 
-#bottombar a {
+#bottom_bar a {
     color: white;
 }
 
-#bottombar a:hover {
+#bottom_bar a:hover {
     text-decoration: none;
 }
