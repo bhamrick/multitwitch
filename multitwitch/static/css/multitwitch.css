@@ -5,6 +5,7 @@ body {
 
 #streams {
     text-align: center;
+    float: left;
     margin: 0;
     padding: 0;
 }
@@ -14,6 +15,10 @@ body {
     width: 320px;
     height: 100%;
     margin: 0;
+    padding: 0;
+}
+
+.stream_chat {
     padding: 0;
 }
 

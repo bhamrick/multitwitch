@@ -21,7 +21,7 @@ function optimize_size(n) {
     }
     $(".stream").height(best_height);
     $(".stream").width(best_width);
-    $("#wrapper").css("padding-top", wrapper_padding);
+    $("#streams").css("padding-top", wrapper_padding);
 }
 
 function absolute_center(object) {
@@ -46,10 +46,10 @@ function set_chat_hidden(hidden) {
     // Semi-placeholder
     var window_height = $(window).height();
     if(!hidden) {
-        var chat_width = 320;
+        var chat_width = 350;
         var wrapper_width = $("#wrapper").width()
         $("#streams").width(wrapper_width - chat_width);
         $("#chatbox").width(chat_width);
-        $(".stream_chat").height(window_height);
+        $(".stream_chat").height(window_height - 60);
     }
 }
