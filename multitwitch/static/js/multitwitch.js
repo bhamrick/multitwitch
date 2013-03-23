@@ -1,10 +1,20 @@
 var chat_hidden = false;
 
 function optimize_size(n) {
-    resize_chat();
-
+    // Resize chat
     var height = $(window).innerHeight();
     var width = $("#streams").width();
+    if(!chat_hidden) {
+        var chat_width = 304;
+        var wrapper_width = $("#wrapper").width();
+        width = wrapper_width - chat_width - 5;
+        $("#streams").width(width);
+        $("#chatbox").width(chat_width);
+        $(".stream_chat").height(window_height - 75);
+    } else {
+        
+    }
+
     var best_height = 0;
     var best_width = 0;
     var wrapper_padding = 0;
@@ -44,16 +54,4 @@ function absolute_center(object) {
     object.css('position', 'absolute');
     object.css('left', pos_x);
     object.css('top', pos_y);
-}
-
-function resize_chat() {
-    // Semi-placeholder
-    var window_height = $(window).height();
-    if(!chat_hidden) {
-        var chat_width = 304;
-        var wrapper_width = $("#wrapper").width();
-        $("#streams").width(wrapper_width - chat_width - 10);
-        $("#chatbox").width(chat_width);
-        $(".stream_chat").height(window_height - 75);
-    }
 }
