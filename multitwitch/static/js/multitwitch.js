@@ -82,3 +82,11 @@ function show_chat() {
     $("#chatbox").show();
     optimize_size(-1);
 }
+
+function toggle_chat() {
+    if (chat_hidden) {
+        show_chat();
+    } else {
+        hide_chat();
+    }
+}
