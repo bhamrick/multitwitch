@@ -9,8 +9,9 @@ function optimize_size(n) {
         } else {
             n = num_streams;
         }
+    } else {
+        num_streams = n;
     }
-    num_streams = n;
 
     // Resize chat
     // height is off by 16 due to body margin
@@ -27,7 +28,6 @@ function optimize_size(n) {
         var wrapper_width = $("#wrapper").width();
         width = wrapper_width;
         $("#streams").width(width);
-        $("#chatbox").hide();
     }
 
     var best_height = 0;
@@ -73,10 +73,12 @@ function absolute_center(object) {
 
 function hide_chat() {
     chat_hidden = true;
+    $("#chatbox").hide();
     optimize_size(-1);
 }
 
 function show_chat() {
     chat_hidden = false;
+    $("#chatbox").show();
     optimize_size(-1);
 }
