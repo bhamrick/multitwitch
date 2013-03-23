@@ -1,4 +1,8 @@
+var chat_hidden = false;
+
 function optimize_size(n) {
+    resize_chat();
+
     var height = $(window).innerHeight();
     var width = $("#streams").width();
     var best_height = 0;
@@ -42,10 +46,10 @@ function absolute_center(object) {
     object.css('top', pos_y);
 }
 
-function set_chat_hidden(hidden) {
+function resize_chat() {
     // Semi-placeholder
     var window_height = $(window).height();
-    if(!hidden) {
+    if(!chat_hidden) {
         var chat_width = 304;
         var wrapper_width = $("#wrapper").width()
         $("#streams").width(wrapper_width - chat_width - 5);
