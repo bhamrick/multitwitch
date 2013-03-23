@@ -7,6 +7,7 @@ body {
     text-align: center;
     float: left;
     margin: 0;
+    margin-right: -100px;
     padding: 0;
 }
 
@@ -14,7 +15,8 @@ body {
     float: right;
     width: 320px;
     height: 100%;
-    margin: 0;
+    margin: 0px;
+    margin-left: -100px;
     padding: 0;
 }
 
