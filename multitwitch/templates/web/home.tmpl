@@ -4,6 +4,7 @@
 <title>{{ project }}</title>
 <link rel="stylesheet" type="text/css" href="/static/css/multitwitch.css" />
 <script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="/static/js/mustache.js"></script>
 <script type="text/javascript" src="/static/js/multitwitch.js"></script>
 <script type="text/javascript">
@@ -24,6 +25,16 @@ $(document).ready(function() {
         $("#helpbox").css('display','block');
     }
     optimize_size({{ nstreams }});
+
+    // Setup tabs
+    // The chat will break size optimization for a while
+    var tabs = $("#chatbox").tabs();
+    tabs.find( ".ui-tabs-nav" ).sortable({
+        axis: "x",
+        stop: function() {
+            tabs.tabs( "refresh" );
+        }
+    });
 });
 $(window).resize(function() {
     absolute_center($("#helpbox"));
@@ -38,6 +49,19 @@ $(window).resize(function() {
 <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
 
 {% endfor %}
+
+<div id="chatbox">
+<ul>
+{% for stream in streams %}
+<li><a href="#chat-{{ stream }}">{{ stream }}</a></li>
+{% endfor %}
+</ul>
+{% for stream in streams %}
+<div id="chat-{{ stream }}">
+<iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="364" width="400"></iframe>
+</div>
+{% endfor %}
+
 
 <div id="helpbox">
 <h1>MultiTwitch.tv</h1>
