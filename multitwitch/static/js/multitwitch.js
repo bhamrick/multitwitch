@@ -23,7 +23,7 @@ function optimize_size(n) {
         width = wrapper_width - chat_width - 5;
         $("#streams").width(width);
         $("#chatbox").width(chat_width);
-        $(".stream_chat").height(height - 75);
+        $(".stream_chat").height(height - 50);
     } else {
         var wrapper_width = $("#wrapper").width();
         width = wrapper_width;

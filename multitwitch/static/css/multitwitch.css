@@ -69,8 +69,10 @@ body {
 
 #bottom_right_bar a {
     color: white;
+    cursor: pointer;
 }
 
 #bottom_right_bar a:hover {
     text-decoration: none;
+    cursor: pointer;
 }
