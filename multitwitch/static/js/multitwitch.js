@@ -33,8 +33,8 @@ function optimize_size(n) {
             wrapper_padding = (height - num_rows * max_height)/2;
         }
     }
-    $(".stream").height(floor(best_height));
-    $(".stream").width(floor(best_width));
+    $(".stream").height(Math.floor(best_height));
+    $(".stream").width(Math.floor(best_width));
     $("#streams").css("padding-top", wrapper_padding);
 }
 
