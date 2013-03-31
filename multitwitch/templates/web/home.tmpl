@@ -60,7 +60,7 @@ $(window).resize(function() {
 </div>
 
 <div id="chatbox">
-<ul>
+<ul id="tablist">
 {% for stream in unique_streams %}
 <li><a href="#chat-{{ stream }}">{{ stream }}</a></li>
 {% endfor %}

@@ -21,9 +21,10 @@ function optimize_size(n) {
         var chat_width = 304;
         var wrapper_width = $("#wrapper").width();
         width = wrapper_width - chat_width - 5;
+        var chat_height = height - $("#tablist").height() - 20;
         $("#streams").width(width);
         $("#chatbox").width(chat_width);
-        $(".stream_chat").height(height - 58);
+        $(".stream_chat").height(chat_height);
     } else {
         var wrapper_width = $("#wrapper").width();
         width = wrapper_width;
