@@ -54,7 +54,7 @@ $(window).resize(function() {
 <div id="streams">
 {% for stream in streams %}
 
-<object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
+<object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}&auto_play=true&start_volume=0" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
 
 {% endfor %}
 </div>
