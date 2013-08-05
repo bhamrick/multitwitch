@@ -5,18 +5,25 @@ import simplejson as json
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('multitwitch/templates'))
 
-def web(template=None, content_type='text/html', *args, **kwargs):
+def web(template=None, test_template=None, content_type='text/html', *args, **kwargs):
     """
     Decorator for web routes
 
     TODO - permissions
     """
+    if test_template is None:
+        test_template = template
     def decorator(f):
         def wrapper(request):
             body = ''
             data = f(request)
-            if template is not None:
-                tmpl = env.get_template(template)
+            template_to_use = None
+            if request.host.startswith("test."):
+                template_to_use = test_template
+            else:
+                template_to_use = template
+            if template_to_use is not None:
+                tmpl = env.get_template(template_to_use)
                 body = tmpl.render(data)
             else:
                 body = data
