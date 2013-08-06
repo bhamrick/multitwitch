@@ -30,12 +30,6 @@ $(document).ready(function() {
     // Setup tabs
     // The chat will break size optimization for a while
     var tabs = $("#chatbox").tabs();
-    tabs.find( ".ui-tabs-nav" ).sortable({
-        axis: "x",
-        stop: function() {
-            tabs.tabs( "refresh" );
-        }
-    });
 
     // Do this after all the jqueryui setup.
     optimize_size({{ nstreams }});
