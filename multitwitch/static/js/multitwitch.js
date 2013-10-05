@@ -15,6 +15,12 @@ function optimize_size(n) {
         num_streams = n;
     }
 
+    if (n == 0) {
+        $("#helpbox").show();
+    } else {
+        $("#helpbox").hide();
+    }
+
     // Resize chat
     // height is off by 16 due to body margin
     var height = $(window).innerHeight() - 16;
