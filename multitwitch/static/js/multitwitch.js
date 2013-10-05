@@ -1,5 +1,7 @@
 var chat_hidden = false;
 var num_streams = -1;
+var streams = new Array();
+var chat_tabs;
 
 function optimize_size(n) {
     // Call with n = -1 to use previously known quantity
@@ -90,4 +92,84 @@ function toggle_chat() {
     } else {
         hide_chat();
     }
+}
+
+function change_streams() {
+    absolute_center($("#change_streams"));
+    $("#change_streams").show();
+    focus_last_stream_box();
+}
+
+function add_stream_item() {
+    $("#streamlist").append($(item_string));
+    absolute_center($("#change_streams"));
+    focus_last_stream_box();
+}
+
+function stream_object(name) {
+    return $('<object type="application/x-shockwave-flash" id="embed_' + name + '" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel="' + name + '"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=' + name + '&auto_play=true&start_volume=0" /></object>');
+}
+
+function chat_object(name) {
+    return $('<div id="chat-' + name + '" class="stream_chat"><iframe frameborder="0" scrolling="no" id="chat-' + name + '-embed" src="http://twitch.tv/chat/embed?channel=' + name + '&popout_chat=true" height="100%" width="100%"></iframe></div>');
+}
+
+function chat_tab_object(name) {
+    return $('<li><a href="#chat-' + name + '">' + name + '</a></li>');
+}
+
+var item_string = '<div class="streamlist_item"><input type="text" class="stream_name" /></div>';
+
+function update_stream_list() {
+    // Update the contents of #streamlist to match streams
+    $("#streamlist .streamlist_item").remove();
+    for (var i = 0; i < streams.length; i++) {
+        $("#streamlist").append($('<div class="streamlist_item"><input type="checkbox" class="check" checked=true" /> <span>' + streams[i] + '</span></div>'));
+    }
+    $("#streamlist").append($(item_string));
+}
+
+function focus_last_stream_box() {
+    stream_boxes = $("#streamlist .stream_name");
+    if (stream_boxes.length > 0) {
+        stream_boxes[stream_boxes.length - 1].focus();
+    }
+}
+
+function close_change_streams(apply) {
+    var new_streams;
+    if(apply) {
+        // Remove all the streams that got unchecked
+        new_streams = new Array();
+        var stream_elements = $("#streams .stream");
+        var chat_elements = $("#chatbox .stream_chat");
+        var chat_tab_elements = $("#tablist li");
+        var list_checks = $("#streamlist .check");
+        for (var i = 0; i < streams.length; i++) {
+            if (!list_checks[i].checked) {
+                stream_elements[i].remove();
+                chat_elements[i].remove();
+                chat_tab_elements[i].remove();
+            } else {
+                new_streams.push(streams[i]);
+            }
+        }
+        // add new streams
+        var new_stream_inputs = $("#streamlist .stream_name");
+        for (var i = 0; i < new_stream_inputs.length; i++) {
+            var stream_name = new_stream_inputs[i].value;
+            if (stream_name == "") {
+                continue;
+            }
+            new_streams.push(stream_name);
+            $("#streams").append(stream_object(stream_name));
+            $("#chatbox").append(chat_object(stream_name));
+            $("#tablist").append(chat_tab_object(stream_name));
+            chat_tabs.tabs("refresh");
+        }
+        streams = new_streams;
+        optimize_size(streams.length);
+    }
+    $("#change_streams").hide();
+    update_stream_list();
 }

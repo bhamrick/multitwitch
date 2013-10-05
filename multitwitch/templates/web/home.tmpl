@@ -27,9 +27,13 @@ $(document).ready(function() {
         $("#helpbox").css('display','block');
     }
 
+    {% for stream in streams %}
+    streams.push("{{ stream }}");
+    {% endfor %}
+
     // Setup tabs
     // The chat will break size optimization for a while
-    var tabs = $("#chatbox").tabs();
+    chat_tabs = $("#chatbox").tabs();
 
     // Do this after all the jqueryui setup.
     optimize_size({{ nstreams }});
@@ -39,22 +43,22 @@ $(document).ready(function() {
 });
 $(window).resize(function() {
     absolute_center($("#helpbox"));
-    optimize_size({{ nstreams }});
+    optimize_size(-1);
 });
 </script>
 </head>
 <body>
 <div id="wrapper">
 <div id="streams">
-{% for stream in streams %}
-
-{% if not is_test %}
-<object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
-{% else %}
-<object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://beta.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
-{% endif %}
-
-{% endfor %}
+    {% for stream in streams %}
+    
+    {% if not is_test %}
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
+    {% else %}
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://beta.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /></object>
+    {% endif %}
+    
+    {% endfor %}
 </div>
 
 <div id="chatbox">
@@ -82,7 +86,33 @@ Created by Brian Hamrick
 </div>
 </div>
 
+<div id="change_streams" class="optionbox">
+    <div id="streamlist">
+    {% for stream in streams %}
+    <div class="streamlist_item">
+    <input type="checkbox" checked=true class="check" />
+    <span>{{ stream }}</span>
+    </div>
+    {% endfor %}
+    <div class="streamlist_item">
+    <input type="text" class="stream_name" />
+    </div>
+    </div>
+
+    <div class="fullwidth centering">
+        <a onclick="add_stream_item()">Add Stream</a>
+    </div>
+
+    <div class="fullwidth">
+    <button type="button" class="left" onclick="close_change_streams(false)">Cancel</button>
+    <button type="button" class="right" onclick="close_change_streams(true)">Ok</button>
+    <div class="clear"></div>
+    </div>
+</div>
+
 <div id="bottom_right_bar">
+<a onclick="change_streams()">Change Streams</a>
+|
 <a onclick="toggle_chat()">Toggle Chat</a>
 </div>
 

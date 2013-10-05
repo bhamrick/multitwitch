@@ -2,6 +2,17 @@ body {
     background: black;
     font: 13px arial, sans-serif;
     margin: 8px;
+    color: white;
+}
+
+a {
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #streams {
@@ -27,11 +38,10 @@ body {
 
 #helpbox {
     text-align: justify;
-    color: white;
     display: none;
     width: 600px;
     margin: 0 auto;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -67,12 +77,43 @@ body {
     bottom: 12px;
 }
 
-#bottom_right_bar a {
-    color: white;
-    cursor: pointer;
+.optionbox {
+    z-index: 5;
+    display: none;
+    background: rgba(0,0,0,0.65);
+    padding: 5px;
+    margin: 0 auto;
+    border: 2px solid white;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    position: absolute;
 }
 
-#bottom_right_bar a:hover {
-    text-decoration: none;
-    cursor: pointer;
+#change_streams {
+    width: 127px;
+}
+
+#streamlist_item .stream_name {
+    width: 123px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.centering {
+    text-align: center;
+}
+
+.clear {
+    clear: both;
 }
