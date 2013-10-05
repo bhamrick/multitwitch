@@ -32,7 +32,6 @@ $(document).ready(function() {
     {% endfor %}
 
     // Setup tabs
-    // The chat will break size optimization for a while
     chat_tabs = $("#chatbox").tabs();
 
     // Do this after all the jqueryui setup.
@@ -95,7 +94,7 @@ Created by Brian Hamrick
     </div>
     {% endfor %}
     <div class="streamlist_item">
-    <input type="text" class="stream_name" />
+    <input type="text" class="stream_name" onkeyup="stream_item_keyup(event)" />
     </div>
     </div>
 

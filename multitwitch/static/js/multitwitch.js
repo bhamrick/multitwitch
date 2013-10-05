@@ -12,13 +12,17 @@ function optimize_size(n) {
             n = num_streams;
         }
     } else {
+        if (n == 0) {
+            $("#helpbox").show();
+            hide_chat();
+        } else {
+            $("#helpbox").hide();
+            if (num_streams == 0) {
+                show_chat();
+                chat_tabs.tabs({ active: 0 });
+            }
+        }
         num_streams = n;
-    }
-
-    if (n == 0) {
-        $("#helpbox").show();
-    } else {
-        $("#helpbox").hide();
     }
 
     // Resize chat
@@ -112,6 +116,14 @@ function add_stream_item() {
     focus_last_stream_box();
 }
 
+function stream_item_keyup(e) {
+    if (e.keyCode == 13 || e.which == 13) {
+        add_stream_item();
+        return false;
+    }
+    return true;
+}
+
 function stream_object(name) {
     return $('<object type="application/x-shockwave-flash" id="embed_' + name + '" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel="' + name + '"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=' + name + '&auto_play=true&start_volume=0" /></object>');
 }
@@ -124,7 +136,7 @@ function chat_tab_object(name) {
     return $('<li><a href="#chat-' + name + '">' + name + '</a></li>');
 }
 
-var item_string = '<div class="streamlist_item"><input type="text" class="stream_name" /></div>';
+var item_string = '<div class="streamlist_item"><input type="text" class="stream_name" onkeyup="stream_item_keyup(event)" /></div>';
 
 function update_stream_list() {
     // Update the contents of #streamlist to match streams
