@@ -187,6 +187,11 @@ function close_change_streams(apply) {
         }
         streams = new_streams;
         optimize_size(streams.length);
+        var new_url = "";
+        for (var i = 0; i < streams.length; i++) {
+            new_url = new_url + '/' + streams[i];
+        }
+        history.replaceState(null, "", new_url);
     }
     $("#change_streams").hide();
     update_stream_list();
