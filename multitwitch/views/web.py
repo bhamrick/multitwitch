@@ -1,4 +1,5 @@
 from multitwitch.lib.session import web, ajax
+from pyramid.response import FileResponse
 
 class WebView:
     @web(template="web/home.tmpl")
@@ -12,3 +13,7 @@ class WebView:
                 'streams' : streams,
                 'unique_streams' : uniq_streams,
                 'nstreams' : len(streams)}
+
+    @staticmethod
+    def favicon(request):
+        return FileResponse("multitwitch/static/favicon.ico", content_type="image/x-icon")
