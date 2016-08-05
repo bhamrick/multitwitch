@@ -125,7 +125,7 @@ function stream_item_keyup(e) {
 }
 
 function stream_object(name) {
-    return $('<iframe id="embed_' + name + '" src="http://player.twitch.tv/?volume=0.00&channel=' + name + '" class="stream" allowfullscreen></iframe>');
+    return $('<iframe id="embed_' + name + '" src="http://player.twitch.tv/?muted=true&channel=' + name + '" class="stream" allowfullscreen="true"></iframe>');
 }
 
 function chat_object(name) {
