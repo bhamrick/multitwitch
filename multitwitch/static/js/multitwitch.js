@@ -125,7 +125,7 @@ function stream_item_keyup(e) {
 }
 
 function stream_object(name) {
-    return $('<object type="application/x-shockwave-flash" id="embed_' + name + '" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel="' + name + '"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="wmode" value="opaque" /><param name="flashvars" value="hostname=www.twitch.tv&channel=' + name + '&auto_play=true&start_volume=0" /></object>');
+    return $('<iframe id="embed_' + name + '" src="http://player.twitch.tv/?volume=0.00&channel=' + name + '" class="stream" allowfullscreen></iframe>');
 }
 
 function chat_object(name) {
