@@ -16,7 +16,7 @@ requires = [
     'waitress',
     ]
 
-setup(name='multitwitch',
+setup(name=' stream.expl.cl',
       version='0.0',
       description='multitwitch',
       long_description=README + '\n\n' +  CHANGES,
