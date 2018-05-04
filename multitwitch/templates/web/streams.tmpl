@@ -552,9 +552,9 @@
 							<div class='videowrapper' id="stream-{{ streams[i] }}"></div>
 							<script type="text/javascript">
 								player_objs['{{ streams[i] }}'] = new Twitch.Player("stream-{{ streams[i] }}", { channel: "{{ streams[i] }}" });
-								player_objs['{{ streams[i] }}'].setVolume(0.75);
+								player_objs['{{ streams[i] }}'].setVolume(0.01);
 								
-								player_objs['{{ streams[i] }}'].setMuted({{ 'false' if i == 0 else 'true'}});
+								player_objs['{{ streams[i] }}'].setMuted({{ 'false' if true or i == 0 else 'true'}});
 								
 							</script>
 							

@@ -13,11 +13,11 @@ class WebView:
     def home(request):
         community_name = 'x3lgaming'
         streamlister = sl.StreamLister()
-        stream_list = streamlister.get_community_streams_by_name(
+        community_streams = streamlister.get_community_streams_by_name(
             community_name)
         return {'project' : 'X3LGaming MultiTwitch',
                 'streams' : [],
-                'community_streams': stream_list,
+                'community_streams': community_streams,
                 'community_name': community_name,
                 'base_url' : 'http://rtmp.roaet.com:5000',
                 'unique_streams' : [],
@@ -27,27 +27,25 @@ class WebView:
     def edit(request):
         community_name = 'x3lgaming'
         streamlister = sl.StreamLister()
-        stream_list = streamlister.get_community_streams_by_name(
+        community_streams = streamlister.get_community_streams_by_name(
             community_name)
 
         path = request.path
-        if path.startswith('/'):
+        print path
+        if path.startswith('/'): # removes front slash /edit/ -> edit/
             path = path[1:]
-        if path.endswith('/'):
+        if path.endswith('/'): # removes back flash
             path = path[:-1]
         path_parts = path.split("/")
-        if len(path_parts) <= 1:
+        if len(path_parts) <= 1: # if only edit
             return "REDIRECT:root:"
-        if 'layout' not in path_parts[-1]:
-            path = '/'.join(path_parts)
-            path = '%s/layout0' % path
-            return "REDIRECT:multitwitch:%s" % path
-        stream_list = path_parts[:-1]
-        stream_list.pop(0)
+        stream_list = path_parts
+        stream_list.pop(0) # removes 'edit'
         edit_string = '/'.join(stream_list)
+        print stream_list
         return {'project' : 'X3LGaming MultiTwitch',
-                'streams' : [],
-                'community_streams': stream_list,
+                'streams' : stream_list,
+                'community_streams': community_streams,
                 'community_name': community_name,
                 'base_url' : 'http://rtmp.roaet.com:5000',
                 'unique_streams' : [],
