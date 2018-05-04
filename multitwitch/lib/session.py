@@ -1,3 +1,5 @@
+import pyramid.httpexceptions as exc
+from pyramid.request import Request
 from pyramid.response import Response
 import jinja2
 
@@ -13,6 +15,13 @@ def web(template=None, content_type='text/html', *args, **kwargs):
         def wrapper(request):
             body = ''
             data = f(request)
+            if "REDIRECT" in data:
+                data_split = data.split(":")
+                if len(data_split) > 1 and data_split[0] == 'REDIRECT':
+                    target = data_split[1]
+                    traverse = data_split[2]
+                    raise exc.HTTPFound(request.route_url(
+                        target, streams=traverse))
             try:
                 data["is_test"] = request.host.startswith("test.")
             except Exception:

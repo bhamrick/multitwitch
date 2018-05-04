@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		
+		<title>{{ project }}</title>
+		
+		<script src="/static/js/fqMiGzLo7_r-a_ahQ5LjKe-jt-Y.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		
+		<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.js"></script>
+		<!--
+        <script type="text/javascript" src="https://multistre.am/static/plugins.js"></script>
+		<script type="text/javascript" src="https://multistre.am/static/script.js"></script>
+        -->
+		<script type="text/javascript" src="/static/js/plugins.js"></script>
+		<script type="text/javascript" src="/static/js/script.js"></script>
+		<script type="text/javascript">
+			var base_url = "{{ base_url }}/";
+			var player_objs = {};
+			var player_type = "twitch";
+			var layout_groups = { 1: { 0: {'haschat': true,},1: {'haschat': true,},2: {'haschat': false,}, },2: { 3: {'haschat': true,},4: {'haschat': true,},5: {'haschat': false,}, },3: { 6: {'haschat': true,},7: {'haschat': true,},8: {'haschat': false,},9: {'haschat': false,}, },4: { 10: {'haschat': true,},11: {'haschat': true,},12: {'haschat': false,},13: {'haschat': false,}, },5: { 14: {'haschat': true,},15: {'haschat': true,},16: {'haschat': false,}, },6: { 17: {'haschat': true,},18: {'haschat': false,}, },7: { 19: {'haschat': true,},20: {'haschat': true,},21: {'haschat': false,}, },8: { 22: {'haschat': true,},23: {'haschat': false,}, }, };
+		</script>
+		
+		
+		<link href="/static/images/favicon.jpg" rel="shortcut icon"/>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/multistream.css" />
+		
+	<style type="text/css">
+
+	
+		#layoutwrapper[data-layout-index="0"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="0"] .streamcontainer[data-index="0"] { display: block; width:75%; height:100%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="0"] .streamoverlay[data-index="0"] { display: block; width:75%; left:0%; top:0%; }
+		
+		
+		#layoutwrapper[data-layout-index="0"] .chatcontainer[data-index="0"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+				#layoutwrapper[data-layout-index="0"] .chatcontainer[data-index="0"] { z-index: 0 !important; visibility: visible !important; }
+			
+			
+				#layoutwrapper[data-layout-index="0"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+		
+		
+			#layoutwrapper[data-layout-index="0"] .hidden-when-one-stream {display: none;}
+		
+		
+	
+		#layoutwrapper[data-layout-index="1"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="1"] .streamcontainer[data-index="0"] { display: block; width:100%; height:60%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="1"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		
+		#layoutwrapper[data-layout-index="1"] .chatcontainer[data-index="0"] { display: block; width:100%; height:40%; left:0%; top:60%; }
+			
+				#layoutwrapper[data-layout-index="1"] .chatcontainer[data-index="0"] { z-index: 0 !important; visibility: visible !important; }
+			
+			
+				#layoutwrapper[data-layout-index="1"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+		
+		
+			#layoutwrapper[data-layout-index="1"] .hidden-when-one-stream {display: none;}
+		
+		
+	
+		#layoutwrapper[data-layout-index="2"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="2"] .streamcontainer[data-index="0"] { display: block; width:100%; height:100%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="2"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		
+		
+			#layoutwrapper[data-layout-index="2"] .hidden-when-one-stream {display: none;}
+		
+		
+			#layoutwrapper[data-layout-index="2"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="2"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="3"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="3"] .streamcontainer[data-index="0"] { display: block; width:75%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="3"] .streamoverlay[data-index="0"] { display: block; width:75%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="3"] .streamcontainer[data-index="1"] { display: block; width:75%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="3"] .streamoverlay[data-index="1"] { display: block; width:75%; left:0%; top:50%; }
+		
+		
+		#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="0"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="1"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="3"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="4"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="4"] .streamcontainer[data-index="0"] { display: block; width:50%; height:58%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="4"] .streamoverlay[data-index="0"] { display: block; width:50%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="4"] .streamcontainer[data-index="1"] { display: block; width:50%; height:58%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="4"] .streamoverlay[data-index="1"] { display: block; width:50%; left:50%; top:0%; }
+		
+		
+		#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="0"] { display: block; width:50%; height:42%; left:0%; top:58%; }
+			
+				#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="0"] { z-index: 0 !important; visibility: visible !important; }
+			
+			
+				#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="1"] { display: block; width:50%; height:42%; left:50%; top:58%; }
+			
+				#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="1"] { z-index: 0 !important; visibility: visible !important; }
+			
+			
+				#layoutwrapper[data-layout-index="4"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="5"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="5"] .streamcontainer[data-index="0"] { display: block; width:100%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="5"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="5"] .streamcontainer[data-index="1"] { display: block; width:100%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="5"] .streamoverlay[data-index="1"] { display: block; width:100%; left:0%; top:50%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="5"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="5"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="6"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="6"] .streamcontainer[data-index="0"] { display: block; width:75%; height:65%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="6"] .streamoverlay[data-index="0"] { display: block; width:75%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="6"] .streamcontainer[data-index="1"] { display: block; width:37%; height:35%; left:0%; top:65%; }
+		#layoutwrapper[data-layout-index="6"] .streamoverlay[data-index="1"] { display: block; width:37%; left:0%; top:65%; }
+		
+		#layoutwrapper[data-layout-index="6"] .streamcontainer[data-index="2"] { display: block; width:38%; height:35%; left:37%; top:65%; }
+		#layoutwrapper[data-layout-index="6"] .streamoverlay[data-index="2"] { display: block; width:38%; left:37%; top:65%; }
+		
+		
+		#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="0"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="1"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="2"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="6"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="7"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="7"] .streamcontainer[data-index="0"] { display: block; width:50%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="7"] .streamoverlay[data-index="0"] { display: block; width:50%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="7"] .streamcontainer[data-index="1"] { display: block; width:50%; height:50%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="7"] .streamoverlay[data-index="1"] { display: block; width:50%; left:50%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="7"] .streamcontainer[data-index="2"] { display: block; width:50%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="7"] .streamoverlay[data-index="2"] { display: block; width:50%; left:0%; top:50%; }
+		
+		
+		#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="0"] { display: block; width:50%; height:50%; left:50%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="1"] { display: block; width:50%; height:50%; left:50%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="2"] { display: block; width:50%; height:50%; left:50%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="7"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="8"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="8"] .streamcontainer[data-index="0"] { display: block; width:100%; height:60%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="8"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="8"] .streamcontainer[data-index="1"] { display: block; width:50%; height:40%; left:0%; top:60%; }
+		#layoutwrapper[data-layout-index="8"] .streamoverlay[data-index="1"] { display: block; width:50%; left:0%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="8"] .streamcontainer[data-index="2"] { display: block; width:50%; height:40%; left:50%; top:60%; }
+		#layoutwrapper[data-layout-index="8"] .streamoverlay[data-index="2"] { display: block; width:50%; left:50%; top:60%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="8"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="8"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+		#layoutwrapper[data-layout-index="9"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="9"] .streamcontainer[data-index="0"] { display: block; width:100%; height:34%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="9"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="9"] .streamcontainer[data-index="1"] { display: block; width:100%; height:33%; left:0%; top:34%; }
+		#layoutwrapper[data-layout-index="9"] .streamoverlay[data-index="1"] { display: block; width:100%; left:0%; top:34%; }
+		
+		#layoutwrapper[data-layout-index="9"] .streamcontainer[data-index="2"] { display: block; width:100%; height:33%; left:0%; top:67%; }
+		#layoutwrapper[data-layout-index="9"] .streamoverlay[data-index="2"] { display: block; width:100%; left:0%; top:67%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="9"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="9"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="10"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="10"] .streamcontainer[data-index="0"] { display: block; width:75%; height:65%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="10"] .streamoverlay[data-index="0"] { display: block; width:75%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="10"] .streamcontainer[data-index="1"] { display: block; width:33%; height:35%; left:0%; top:65%; }
+		#layoutwrapper[data-layout-index="10"] .streamoverlay[data-index="1"] { display: block; width:33%; left:0%; top:65%; }
+		
+		#layoutwrapper[data-layout-index="10"] .streamcontainer[data-index="2"] { display: block; width:34%; height:35%; left:33%; top:65%; }
+		#layoutwrapper[data-layout-index="10"] .streamoverlay[data-index="2"] { display: block; width:34%; left:33%; top:65%; }
+		
+		#layoutwrapper[data-layout-index="10"] .streamcontainer[data-index="3"] { display: block; width:33%; height:35%; left:67%; top:65%; }
+		#layoutwrapper[data-layout-index="10"] .streamoverlay[data-index="3"] { display: block; width:33%; left:67%; top:65%; }
+		
+		
+		#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="0"] { display: block; width:25%; height:65%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="1"] { display: block; width:25%; height:65%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="2"] { display: block; width:25%; height:65%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="3"] { display: block; width:25%; height:65%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="10"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="11"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="11"] .streamcontainer[data-index="0"] { display: block; width:37%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="11"] .streamoverlay[data-index="0"] { display: block; width:37%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="11"] .streamcontainer[data-index="1"] { display: block; width:38%; height:50%; left:37%; top:0%; }
+		#layoutwrapper[data-layout-index="11"] .streamoverlay[data-index="1"] { display: block; width:38%; left:37%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="11"] .streamcontainer[data-index="2"] { display: block; width:37%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="11"] .streamoverlay[data-index="2"] { display: block; width:37%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="11"] .streamcontainer[data-index="3"] { display: block; width:38%; height:50%; left:37%; top:50%; }
+		#layoutwrapper[data-layout-index="11"] .streamoverlay[data-index="3"] { display: block; width:38%; left:37%; top:50%; }
+		
+		
+		#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="0"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="1"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="2"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="3"] { display: block; width:25%; height:100%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="11"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="12"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="12"] .streamcontainer[data-index="0"] { display: block; width:50%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="12"] .streamoverlay[data-index="0"] { display: block; width:50%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="12"] .streamcontainer[data-index="1"] { display: block; width:50%; height:50%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="12"] .streamoverlay[data-index="1"] { display: block; width:50%; left:50%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="12"] .streamcontainer[data-index="2"] { display: block; width:50%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="12"] .streamoverlay[data-index="2"] { display: block; width:50%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="12"] .streamcontainer[data-index="3"] { display: block; width:50%; height:50%; left:50%; top:50%; }
+		#layoutwrapper[data-layout-index="12"] .streamoverlay[data-index="3"] { display: block; width:50%; left:50%; top:50%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="12"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="12"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+		#layoutwrapper[data-layout-index="13"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="13"] .streamcontainer[data-index="0"] { display: block; width:100%; height:25%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="13"] .streamoverlay[data-index="0"] { display: block; width:100%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="13"] .streamcontainer[data-index="1"] { display: block; width:100%; height:25%; left:0%; top:25%; }
+		#layoutwrapper[data-layout-index="13"] .streamoverlay[data-index="1"] { display: block; width:100%; left:0%; top:25%; }
+		
+		#layoutwrapper[data-layout-index="13"] .streamcontainer[data-index="2"] { display: block; width:100%; height:25%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="13"] .streamoverlay[data-index="2"] { display: block; width:100%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="13"] .streamcontainer[data-index="3"] { display: block; width:100%; height:25%; left:0%; top:75%; }
+		#layoutwrapper[data-layout-index="13"] .streamoverlay[data-index="3"] { display: block; width:100%; left:0%; top:75%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="13"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="13"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="14"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="14"] .streamcontainer[data-index="0"] { display: block; width:37%; height:60%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="14"] .streamoverlay[data-index="0"] { display: block; width:37%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="14"] .streamcontainer[data-index="1"] { display: block; width:38%; height:60%; left:37%; top:0%; }
+		#layoutwrapper[data-layout-index="14"] .streamoverlay[data-index="1"] { display: block; width:38%; left:37%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="14"] .streamcontainer[data-index="2"] { display: block; width:33%; height:40%; left:0%; top:60%; }
+		#layoutwrapper[data-layout-index="14"] .streamoverlay[data-index="2"] { display: block; width:33%; left:0%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="14"] .streamcontainer[data-index="3"] { display: block; width:34%; height:40%; left:33%; top:60%; }
+		#layoutwrapper[data-layout-index="14"] .streamoverlay[data-index="3"] { display: block; width:34%; left:33%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="14"] .streamcontainer[data-index="4"] { display: block; width:33%; height:40%; left:67%; top:60%; }
+		#layoutwrapper[data-layout-index="14"] .streamoverlay[data-index="4"] { display: block; width:33%; left:67%; top:60%; }
+		
+		
+		#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] { display: block; width:25%; height:60%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] { display: block; width:25%; height:60%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] { display: block; width:25%; height:60%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] { display: block; width:25%; height:60%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] { display: block; width:25%; height:60%; left:75%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="14"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="15"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="15"] .streamcontainer[data-index="0"] { display: block; width:33%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="15"] .streamoverlay[data-index="0"] { display: block; width:33%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="15"] .streamcontainer[data-index="1"] { display: block; width:34%; height:50%; left:33%; top:0%; }
+		#layoutwrapper[data-layout-index="15"] .streamoverlay[data-index="1"] { display: block; width:34%; left:33%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="15"] .streamcontainer[data-index="2"] { display: block; width:33%; height:50%; left:67%; top:0%; }
+		#layoutwrapper[data-layout-index="15"] .streamoverlay[data-index="2"] { display: block; width:33%; left:67%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="15"] .streamcontainer[data-index="3"] { display: block; width:33%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="15"] .streamoverlay[data-index="3"] { display: block; width:33%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="15"] .streamcontainer[data-index="4"] { display: block; width:33%; height:50%; left:67%; top:50%; }
+		#layoutwrapper[data-layout-index="15"] .streamoverlay[data-index="4"] { display: block; width:33%; left:67%; top:50%; }
+		
+		
+		#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="15"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="16"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="16"] .streamcontainer[data-index="0"] { display: block; width:50%; height:60%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="16"] .streamoverlay[data-index="0"] { display: block; width:50%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="16"] .streamcontainer[data-index="1"] { display: block; width:50%; height:60%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="16"] .streamoverlay[data-index="1"] { display: block; width:50%; left:50%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="16"] .streamcontainer[data-index="2"] { display: block; width:33%; height:40%; left:0%; top:60%; }
+		#layoutwrapper[data-layout-index="16"] .streamoverlay[data-index="2"] { display: block; width:33%; left:0%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="16"] .streamcontainer[data-index="3"] { display: block; width:34%; height:40%; left:33%; top:60%; }
+		#layoutwrapper[data-layout-index="16"] .streamoverlay[data-index="3"] { display: block; width:34%; left:33%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="16"] .streamcontainer[data-index="4"] { display: block; width:33%; height:40%; left:67%; top:60%; }
+		#layoutwrapper[data-layout-index="16"] .streamoverlay[data-index="4"] { display: block; width:33%; left:67%; top:60%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="16"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="16"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="17"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="0"] { display: block; width:38%; height:33%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="0"] { display: block; width:38%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="1"] { display: block; width:38%; height:33%; left:38%; top:0%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="1"] { display: block; width:38%; left:38%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="2"] { display: block; width:38%; height:34%; left:0%; top:33%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="2"] { display: block; width:38%; left:0%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="3"] { display: block; width:38%; height:34%; left:38%; top:33%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="3"] { display: block; width:38%; left:38%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="4"] { display: block; width:38%; height:33%; left:0%; top:67%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="4"] { display: block; width:38%; left:0%; top:67%; }
+		
+		#layoutwrapper[data-layout-index="17"] .streamcontainer[data-index="5"] { display: block; width:38%; height:33%; left:38%; top:67%; }
+		#layoutwrapper[data-layout-index="17"] .streamoverlay[data-index="5"] { display: block; width:38%; left:38%; top:67%; }
+		
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="0"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="1"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="2"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="3"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="4"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] { display: block; width:24%; height:100%; left:76%; top:0%; }
+			
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="17"] .chatcontainer[data-index="5"] .chatselector[data-index="5"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="18"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="0"] { display: block; width:33%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="0"] { display: block; width:33%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="1"] { display: block; width:34%; height:50%; left:33%; top:0%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="1"] { display: block; width:34%; left:33%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="2"] { display: block; width:33%; height:50%; left:67%; top:0%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="2"] { display: block; width:33%; left:67%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="3"] { display: block; width:33%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="3"] { display: block; width:33%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="4"] { display: block; width:34%; height:50%; left:33%; top:50%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="4"] { display: block; width:34%; left:33%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="18"] .streamcontainer[data-index="5"] { display: block; width:33%; height:50%; left:67%; top:50%; }
+		#layoutwrapper[data-layout-index="18"] .streamoverlay[data-index="5"] { display: block; width:33%; left:67%; top:50%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="18"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="18"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="19"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="0"] { display: block; width:25%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="0"] { display: block; width:25%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="1"] { display: block; width:25%; height:50%; left:25%; top:0%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="1"] { display: block; width:25%; left:25%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="2"] { display: block; width:25%; height:50%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="2"] { display: block; width:25%; left:50%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="3"] { display: block; width:25%; height:50%; left:75%; top:0%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="3"] { display: block; width:25%; left:75%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="4"] { display: block; width:25%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="4"] { display: block; width:25%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="5"] { display: block; width:25%; height:50%; left:25%; top:50%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="5"] { display: block; width:25%; left:25%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="19"] .streamcontainer[data-index="6"] { display: block; width:25%; height:50%; left:50%; top:50%; }
+		#layoutwrapper[data-layout-index="19"] .streamoverlay[data-index="6"] { display: block; width:25%; left:50%; top:50%; }
+		
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="0"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="1"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="2"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="3"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="4"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="5"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="19"] .chatcontainer[data-index="6"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="20"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="0"] { display: block; width:50%; height:50%; left:25%; top:0%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="0"] { display: block; width:50%; left:25%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="1"] { display: block; width:25%; height:33%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="1"] { display: block; width:25%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="2"] { display: block; width:25%; height:34%; left:0%; top:33%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="2"] { display: block; width:25%; left:0%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="3"] { display: block; width:25%; height:33%; left:0%; top:67%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="3"] { display: block; width:25%; left:0%; top:67%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="4"] { display: block; width:25%; height:33%; left:75%; top:0%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="4"] { display: block; width:25%; left:75%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="5"] { display: block; width:25%; height:34%; left:75%; top:33%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="5"] { display: block; width:25%; left:75%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="20"] .streamcontainer[data-index="6"] { display: block; width:25%; height:33%; left:75%; top:67%; }
+		#layoutwrapper[data-layout-index="20"] .streamoverlay[data-index="6"] { display: block; width:25%; left:75%; top:67%; }
+		
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="0"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="1"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="2"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="3"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="4"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="5"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] { display: block; width:50%; height:50%; left:25%; top:50%; }
+			
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="20"] .chatcontainer[data-index="6"] .chatselector[data-index="6"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="21"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="0"] { display: block; width:33%; height:60%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="0"] { display: block; width:33%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="1"] { display: block; width:34%; height:60%; left:33%; top:0%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="1"] { display: block; width:34%; left:33%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="2"] { display: block; width:33%; height:60%; left:67%; top:0%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="2"] { display: block; width:33%; left:67%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="3"] { display: block; width:25%; height:40%; left:0%; top:60%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="3"] { display: block; width:25%; left:0%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="4"] { display: block; width:25%; height:40%; left:25%; top:60%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="4"] { display: block; width:25%; left:25%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="5"] { display: block; width:25%; height:40%; left:50%; top:60%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="5"] { display: block; width:25%; left:50%; top:60%; }
+		
+		#layoutwrapper[data-layout-index="21"] .streamcontainer[data-index="6"] { display: block; width:25%; height:40%; left:75%; top:60%; }
+		#layoutwrapper[data-layout-index="21"] .streamoverlay[data-index="6"] { display: block; width:25%; left:75%; top:60%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="21"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="21"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	
+		#layoutwrapper[data-layout-index="22"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="0"] { display: block; width:33%; height:33%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="0"] { display: block; width:33%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="1"] { display: block; width:34%; height:33%; left:33%; top:0%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="1"] { display: block; width:34%; left:33%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="2"] { display: block; width:33%; height:33%; left:67%; top:0%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="2"] { display: block; width:33%; left:67%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="3"] { display: block; width:33%; height:34%; left:0%; top:33%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="3"] { display: block; width:33%; left:0%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="4"] { display: block; width:34%; height:34%; left:33%; top:33%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="4"] { display: block; width:34%; left:33%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="5"] { display: block; width:33%; height:34%; left:67%; top:33%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="5"] { display: block; width:33%; left:67%; top:33%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="6"] { display: block; width:33%; height:33%; left:0%; top:67%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="6"] { display: block; width:33%; left:0%; top:67%; }
+		
+		#layoutwrapper[data-layout-index="22"] .streamcontainer[data-index="7"] { display: block; width:34%; height:33%; left:33%; top:67%; }
+		#layoutwrapper[data-layout-index="22"] .streamoverlay[data-index="7"] { display: block; width:34%; left:33%; top:67%; }
+		
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="0"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="1"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="2"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="3"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="4"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="5"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="6"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] { display: block; width:33%; height:33%; left:67%; top:67%; }
+			
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="0"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="1"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="2"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="3"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="4"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="5"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="6"] { display: block; }
+			
+				#layoutwrapper[data-layout-index="22"] .chatcontainer[data-index="7"] .chatselector[data-index="7"] { display: block; }
+			
+		
+		
+		
+	
+		#layoutwrapper[data-layout-index="23"] { width:100%; height:100%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="0"] { display: block; width:25%; height:50%; left:0%; top:0%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="0"] { display: block; width:25%; left:0%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="1"] { display: block; width:25%; height:50%; left:25%; top:0%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="1"] { display: block; width:25%; left:25%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="2"] { display: block; width:25%; height:50%; left:50%; top:0%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="2"] { display: block; width:25%; left:50%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="3"] { display: block; width:25%; height:50%; left:75%; top:0%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="3"] { display: block; width:25%; left:75%; top:0%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="4"] { display: block; width:25%; height:50%; left:0%; top:50%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="4"] { display: block; width:25%; left:0%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="5"] { display: block; width:25%; height:50%; left:25%; top:50%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="5"] { display: block; width:25%; left:25%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="6"] { display: block; width:25%; height:50%; left:50%; top:50%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="6"] { display: block; width:25%; left:50%; top:50%; }
+		
+		#layoutwrapper[data-layout-index="23"] .streamcontainer[data-index="7"] { display: block; width:25%; height:50%; left:75%; top:50%; }
+		#layoutwrapper[data-layout-index="23"] .streamoverlay[data-index="7"] { display: block; width:25%; left:75%; top:50%; }
+		
+		
+		
+		
+			#layoutwrapper[data-layout-index="23"] .hidden-when-no-chat {display: none;}
+			#layoutwrapper[data-layout-index="23"] .streamoverlay .mainbuttons button {border-radius: 5px;}
+		
+	
+
+	</style>
+
+	</head>
+	<body>
+		<div id="bodywrapper">
+		
+	<!--div id="backgroundoverlay"></div-->
+	<div id="sidebar">
+		<a class="edit sidebar-button" href="/edit/{{ edit_string }}/" title="Edit Streams"></a>
+			<div class="layoutselectors">
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 1 else '' }}" data-streams="1">
+				
+					<div class="layoutselector" id="layoutselector0" data-index="0">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:35px;height:48px;left:0px;top:0px;text-align:center;line-height:48px;">1</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector1" data-index="1">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:28px;left:0px;top:0px;text-align:center;line-height:28px;">1</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:48px;height:18px;left:0px;top:30px;text-align:center;line-height:18px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector2" data-index="2">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:48px;left:0px;top:0px;text-align:center;line-height:48px;">1</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 2 else '' }}" data-streams="2">
+				
+					<div class="layoutselector" id="layoutselector3" data-index="3">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:35px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:35px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">2</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector4" data-index="4">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:27px;left:0px;top:0px;text-align:center;line-height:27px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:27px;left:25px;top:0px;text-align:center;line-height:27px;">2</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:19px;left:0px;top:29px;text-align:center;line-height:19px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:19px;left:25px;top:29px;text-align:center;line-height:19px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector5" data-index="5">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">2</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 3 else '' }}" data-streams="3">
+				
+					<div class="layoutselector" id="layoutselector6" data-index="6">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:35px;height:30px;left:0px;top:0px;text-align:center;line-height:30px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:16px;height:15px;left:0px;top:32px;text-align:center;line-height:15px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:15px;left:18px;top:32px;text-align:center;line-height:15px;">3</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector7" data-index="7">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:25px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">3</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector8" data-index="8">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:28px;left:0px;top:0px;text-align:center;line-height:28px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:18px;left:0px;top:30px;text-align:center;line-height:18px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:18px;left:25px;top:30px;text-align:center;line-height:18px;">3</div>
+							
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector9" data-index="9">
+						<div style="width:50px;height:49px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:15px;left:0px;top:0px;text-align:center;line-height:15px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:14px;left:0px;top:17px;text-align:center;line-height:14px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:14px;left:0px;top:33px;text-align:center;line-height:14px;">3</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 4 else '' }}" data-streams="4">
+				
+					<div class="layoutselector" id="layoutselector10" data-index="10">
+						<div style="width:49px;height:49px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:35px;height:30px;left:0px;top:0px;text-align:center;line-height:30px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:15px;left:0px;top:32px;text-align:center;line-height:15px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:15px;left:16px;top:32px;text-align:center;line-height:15px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:15px;left:33px;top:32px;text-align:center;line-height:15px;">4</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:30px;left:37px;top:0px;text-align:center;line-height:30px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:30px;left:37px;top:0px;text-align:center;line-height:30px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:30px;left:37px;top:0px;text-align:center;line-height:30px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:30px;left:37px;top:0px;text-align:center;line-height:30px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector11" data-index="11">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:16px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:23px;left:18px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:16px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:23px;left:18px;top:25px;text-align:center;line-height:23px;">4</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:37px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector12" data-index="12">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:25px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">4</div>
+							
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector13" data-index="13">
+						<div style="width:50px;height:49px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:10px;left:0px;top:0px;text-align:center;line-height:10px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:10px;left:0px;top:12px;text-align:center;line-height:10px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:10px;left:0px;top:25px;text-align:center;line-height:10px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:48px;height:10px;left:0px;top:37px;text-align:center;line-height:10px;">4</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 5 else '' }}" data-streams="5">
+				
+					<div class="layoutselector" id="layoutselector14" data-index="14">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:16px;height:28px;left:0px;top:0px;text-align:center;line-height:28px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:28px;left:18px;top:0px;text-align:center;line-height:28px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:18px;left:0px;top:30px;text-align:center;line-height:18px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:18px;left:16px;top:30px;text-align:center;line-height:18px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:18px;left:33px;top:30px;text-align:center;line-height:18px;">5</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:28px;left:37px;top:0px;text-align:center;line-height:28px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:28px;left:37px;top:0px;text-align:center;line-height:28px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:28px;left:37px;top:0px;text-align:center;line-height:28px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:28px;left:37px;top:0px;text-align:center;line-height:28px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:28px;left:37px;top:0px;text-align:center;line-height:28px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector15" data-index="15">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:23px;left:16px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:33px;top:0px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:33px;top:25px;text-align:center;line-height:23px;">5</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector16" data-index="16">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:28px;left:0px;top:0px;text-align:center;line-height:28px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:28px;left:25px;top:0px;text-align:center;line-height:28px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:18px;left:0px;top:30px;text-align:center;line-height:18px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:18px;left:16px;top:30px;text-align:center;line-height:18px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:18px;left:33px;top:30px;text-align:center;line-height:18px;">5</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 6 else '' }}" data-streams="6">
+				
+					<div class="layoutselector" id="layoutselector17" data-index="17">
+						<div style="width:50px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:14px;left:0px;top:0px;text-align:center;line-height:14px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:14px;left:19px;top:0px;text-align:center;line-height:14px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:15px;left:0px;top:16px;text-align:center;line-height:15px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:15px;left:19px;top:16px;text-align:center;line-height:15px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:14px;left:0px;top:33px;text-align:center;line-height:14px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:17px;height:14px;left:19px;top:33px;text-align:center;line-height:14px;">6</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:48px;left:38px;top:0px;text-align:center;line-height:48px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector18" data-index="18">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:23px;left:16px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:33px;top:0px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:23px;left:16px;top:25px;text-align:center;line-height:23px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:23px;left:33px;top:25px;text-align:center;line-height:23px;">6</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 7 else '' }}" data-streams="7">
+				
+					<div class="layoutselector" id="layoutselector19" data-index="19">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:12px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:25px;top:0px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:37px;top:0px;text-align:center;line-height:23px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">7</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector20" data-index="20">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:23px;height:23px;left:12px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:14px;left:0px;top:0px;text-align:center;line-height:14px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:15px;left:0px;top:16px;text-align:center;line-height:15px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:14px;left:0px;top:33px;text-align:center;line-height:14px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:14px;left:37px;top:0px;text-align:center;line-height:14px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:15px;left:37px;top:16px;text-align:center;line-height:15px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:14px;left:37px;top:33px;text-align:center;line-height:14px;">7</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:23px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector21" data-index="21">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:28px;left:0px;top:0px;text-align:center;line-height:28px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:28px;left:16px;top:0px;text-align:center;line-height:28px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:28px;left:33px;top:0px;text-align:center;line-height:28px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:18px;left:0px;top:30px;text-align:center;line-height:18px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:18px;left:12px;top:30px;text-align:center;line-height:18px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:18px;left:25px;top:30px;text-align:center;line-height:18px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:18px;left:37px;top:30px;text-align:center;line-height:18px;">7</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="layoutgroup {{ 'current' if nstreams == 8 else '' }}" data-streams="8">
+				
+					<div class="layoutselector" id="layoutselector22" data-index="22">
+						<div style="width:49px;height:49px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:14px;left:0px;top:0px;text-align:center;line-height:14px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:14px;left:16px;top:0px;text-align:center;line-height:14px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:14px;left:33px;top:0px;text-align:center;line-height:14px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:15px;left:0px;top:16px;text-align:center;line-height:15px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:15px;left:16px;top:16px;text-align:center;line-height:15px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:15px;left:33px;top:16px;text-align:center;line-height:15px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:14px;height:14px;left:0px;top:33px;text-align:center;line-height:14px;">7</div>
+							
+							<div class="streamthumb" style="position:absolute;width:15px;height:14px;left:16px;top:33px;text-align:center;line-height:14px;">8</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:14px;height:14px;left:33px;top:33px;text-align:center;line-height:14px;">C</div>
+							
+						</div>
+					</div>
+				
+					<div class="layoutselector" id="layoutselector23" data-index="23">
+						<div style="width:49px;height:50px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:0px;top:0px;text-align:center;line-height:23px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:12px;top:0px;text-align:center;line-height:23px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:25px;top:0px;text-align:center;line-height:23px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:37px;top:0px;text-align:center;line-height:23px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:0px;top:25px;text-align:center;line-height:23px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:12px;top:25px;text-align:center;line-height:23px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:25px;top:25px;text-align:center;line-height:23px;">7</div>
+							
+							<div class="streamthumb" style="position:absolute;width:10px;height:23px;left:37px;top:25px;text-align:center;line-height:23px;">8</div>
+							
+							
+						</div>
+					</div>
+				
+				</div>
+			
+			</div>
+		<!--a id="sponsorlogo" target="_blank"></a-->
+		<a id="logo" href="{{ base_url }}"></a>
+	</div>
+	<div id="contentwrapper" class="viewtemplate">
+		<div id="layoutwrapper">
+            {% for i in range(nstreams) %}				
+					<div class="streamcontainer {{ 'audio chat' if i == 0 else '' }} player-twitch" data-tag="{{ streams[i] }}" data-index="{{ i }}" data-object-type="stream">
+						
+							
+							<div class='videowrapper' id="stream-{{ streams[i] }}"></div>
+							<script type="text/javascript">
+								player_objs['{{ streams[i] }}'] = new Twitch.Player("stream-{{ streams[i] }}", { channel: "{{ streams[i] }}" });
+								player_objs['{{ streams[i] }}'].setVolume(0.75);
+								
+								player_objs['{{ streams[i] }}'].setMuted({{ 'false' if i == 0 else 'true'}});
+								
+							</script>
+							
+						
+					</div>
+					<div class="streamoverlay {{ 'audio chat' if i == 0 else '' }} player-twitch" data-tag="{{ streams[i] }}" data-index="{{ i }}" data-object-type="stream">
+						<div class='audioicon'></div>
+						<div class='chaticon hidden-when-no-chat'></div>
+						<div class='overlaypopup'>
+							<div class='overlaycaption'>
+								<span class="streamnumber">{{ i+1 }}</span> <span class="streamname">{{ streams[i] }}</span>
+							</div>
+							<div class='mainbuttons'>
+								<button class='audiobutton hidden-when-one-stream' data-tag='{{ streams[i] }}' title='Audio'><span class="audioicon"></span> Audio</button>
+								<button class='bothbutton hidden-when-one-stream hidden-when-no-chat' data-tag='{{ streams[i] }}' title='Both'><span class="bothicon"></span> Both</button>
+								<button class='chatbutton hidden-when-one-stream hidden-when-no-chat' data-tag='{{ streams[i] }}' title='Chat'><span class="chaticon"></span> Chat</button>
+
+							</div>
+							<div class='auxbuttons'>
+								<button class='profilebutton' onClick="window.open('//www.twitch.tv/{{ streams[i] }}/profile', '_blank');" title='Profile'><span class="profileicon"></span> Profile &raquo;</button>
+								<button class='reloadstream' data-tag='{{ streams[i] }}' title='Reload'><span class="reloadicon"></span> Reload</button>
+								<button class='closebutton hidden-when-one-stream' data-tag='{{ streams[i] }}' title='Close'><span class="closeicon"></span> Close</button>
+							</div>
+						</div>
+					</div>
+{% endfor %}
+{% for i in range(nstreams) %}
+					<div class="chatcontainer {{ 'current' if i == 0 else '' }}" data-tag="{{ streams[i] }}" data-index="{{ i }}" data-object-type="chat">
+						
+							<iframe frameborder="0" scrolling="no" id="{{ streams[i] }}" src="https://www.twitch.tv/embed/{{ streams[i] }}/chat"></iframe>
+							<!--iframe frameborder="0" scrolling="no" id="{{ streams[i] }}" src="https://www.twitch.tv/{{ streams[i] }}/chat?popout="></iframe-->
+							<!--iframe frameborder="0" scrolling="no" id="{{ streams[i] }}" src="https://www.twitch.tv/chat/embed?channel={{ streams[i] }}&popout_chat=true"></iframe-->
+						
+						<div class="chatcaption">
+							<button class="streamname chatmenuopener"><span class='chaticon'></span> {{ streams[i] }} <span class="arrow"></span></button>
+							<button class="reloadchat" data-tag="{{ streams[i] }}"><span class="reloadicon"></span> Reload</button>
+							<ol class='chatmenu'>
+							
+                                {% for j in range(nstreams) %}
+								<li class='chatselector' data-index='{{ j }}' data-tag='{{ streams[j] }}'><span class="chaticon"></span> <span class="streamname">{{ streams[j] }}</span></li>
+							
+                                {% endfor %}
+							</ol>
+						</div>
+					</div>
+{% endfor %}
+		</div>
+	</div>
+
+		</div>
+	</body>
+</html>
