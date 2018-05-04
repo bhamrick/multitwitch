@@ -3,31 +3,12 @@
 	<head>
 		
 		<title>{{ project }}</title>
-		
-		<script src="/static/js/fqMiGzLo7_r-a_ahQ5LjKe-jt-Y.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.js"></script>
-		<!--
-        <script type="text/javascript" src="https://multistre.am/static/plugins.js"></script>
-		<script type="text/javascript" src="https://multistre.am/static/script.js"></script>
-        -->
-		<script type="text/javascript" src="/static/js/plugins.js"></script>
-		<script type="text/javascript" src="/static/js/script.js"></script>
+	    {% include 'web/common_js.tmpl' %}
 		<script type="text/javascript">
 			var base_url = "{{ base_url }}/";
-			var player_objs = {};
-			var player_type = "";
-			var layout_groups = { 1: { 0: {'haschat': true,},1: {'haschat': true,},2: {'haschat': false,}, },2: { 3: {'haschat': true,},4: {'haschat': true,},5: {'haschat': false,}, },3: { 6: {'haschat': true,},7: {'haschat': true,},8: {'haschat': false,},9: {'haschat': false,}, },4: { 10: {'haschat': true,},11: {'haschat': true,},12: {'haschat': false,},13: {'haschat': false,}, },5: { 14: {'haschat': true,},15: {'haschat': true,},16: {'haschat': false,}, },6: { 17: {'haschat': true,},18: {'haschat': false,}, },7: { 19: {'haschat': true,},20: {'haschat': true,},21: {'haschat': false,}, },8: { 22: {'haschat': true,},23: {'haschat': false,}, }, };
+            {% include 'web/common_player_js.tmpl' %}
 		</script>
-		
-		
-		<link href="/static/images/favicon.jpg" rel="shortcut icon"/>
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-		<link href="https://fonts.googleapis.com/css?family=PT+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/multistream.css" />
-		
-		
+	    {% include 'web/common_css.tmpl' %}	
 	</head>
 	<body>
 		<div id="bodywrapper">
@@ -620,7 +601,7 @@
 						</div>-->
 						<div id='tag-filters' class='filter-group'>
                             <!-- filters -->
-							<button data-filter-value=".tag-kbmod-community">KBMOD Community</button>
+							<button data-filter-value=".tag-community">{{ community_name }} Community</button>
 							<button data-filter-value=".tag-staff-picks">Staff Picks</button>
 							<button data-filter-value="*">All</button>
 						</div>
@@ -630,7 +611,7 @@
 					
                         {% for comstream in community_streams %}
                         <!-- community/staff picks -->
-						<div class="channel tag-kbmod-community" rel="{{comstream['name']}}">
+						<div class="channel tag-community" rel="{{comstream['name']}}">
 							<div class=channelimage style="background-image: url('{{comstream['preview']}}');">
 								<div class=channelcaption>
 									<div class=channelname>{{comstream['name']}}</div>
@@ -656,13 +637,7 @@
 		<div id="submitbuttoncontainer" class='clearfix'><button id='clearbutton'>Clear</button><button id='cancelbutton'>Cancel</button><button type="submit" value="Watch Streams">Watch Streams</button></div>
 		<div style="clear:both;"></div>
         <!-- footer -->
-		<ul id="menu-primary-menu" class="menu">
-			<li>Sponsored by the <a href="//kbmod.com/" target="_blank">KBMOD PC Gaming Community</a> / </li>
-			<li><a href="//kbmod.com/category/podcast/" target="_blank">Podcast</a> / </li>
-			<li><a href="//kbmod.com/category/build-guides/" target="_blank">Build Guides</a> / </li>
-			<li><a href="//kbmod.com/merch/" target="_blank">Merch</a> / </li>
-			<li><a href="//kbmod.com/join-us/" target="_blank">Join Us</a> </li>
-		</ul>
+        {% include 'web/footer.tmpl' %}
 		</form>
 	</div>
 

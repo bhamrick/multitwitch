@@ -7,7 +7,7 @@ $(document).ready( function() {
 	var $featured_container = 0;
 	var $followed_container = 0;
 	var default_live_filter = "*";
-	var default_tag_filter = ".tag-kbmod-community";
+	var default_tag_filter = ".tag-community";
 	var default_sort = "random";
 	var num_streams = 0; //ugh, couldn't quite get rid of this
 	var layout_timer = false;
