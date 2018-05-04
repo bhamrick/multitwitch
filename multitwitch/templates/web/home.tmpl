@@ -1,121 +1,646 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>{{ project }}</title>
-<link rel="stylesheet" type="text/css" href="/static/css/multitwitch.css" />
-<link rel="icon" href="/favicon.ico" />
-<script type="text/javascript" src="/static/js/jquery.js"></script>
-<script type="text/javascript" src="/static/js/jquery-ui/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.css" />
-<script type="text/javascript" src="/static/js/mustache.js"></script>
-<script type="text/javascript" src="/static/js/multitwitch.js"></script>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36803885-1']);
-  _gaq.push(['_trackPageview']);
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		
+		<title>{{ project }}</title>
+	    {% include 'web/common_js.tmpl' %}
+		<script type="text/javascript">
+			var base_url = "{{ base_url }}/";
+            {% include 'web/common_player_js.tmpl' %}
+		</script>
+	    {% include 'web/common_css.tmpl' %}	
+	</head>
+	<body>
+		<div id="bodywrapper">
+		
+	<div id="contentwrapper" class="indextemplate">
+		<a id="logo" href="{{ base_url }}/"></a>
+		<!--a id="sponsorlogo" target="_blank"></a-->
+		<form id="buildlayoutform" method="GET" action="{{ base_url }}/view">
+			<div class="tabs">
+				<ul>
+					<li id="custom-tab-selector"><a href="#custom">Custom</a></li>
+					<li id="featured-tab-selector"><a href="#featured">Featured</a></li>
+					<!--li id="following-tab-selector"><a href="#following">Following</a></li-->
+				</ul>
+				<div id="custom">
+					
+					<div class=streamfieldcontainer><!--label for="s0">Stream 1</label--><input placeholder="Stream 1" data-index="0" class="streamfield deletable" type="text" name="s0" id="field0" {{ 'value="%s"' % streams[0] if nstreams > 0 else '' }}/><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s1">Stream 2</label--><input placeholder="Stream 2" data-index="1" class="streamfield deletable" type="text" name="s1" id="field1" {{ 'value="%s"' % streams[1] if nstreams > 1 else '' }} /><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s2">Stream 3</label--><input placeholder="Stream 3" data-index="2" class="streamfield deletable" type="text" name="s2" id="field2" {{ 'value="%s"' % streams[2] if nstreams > 2 else '' }} /><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s3">Stream 4</label--><input placeholder="Stream 4" data-index="3" class="streamfield deletable" type="text" name="s3" id="field3" {{ 'value="%s"' % streams[3] if nstreams > 3 else '' }} /><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s4">Stream 5</label--><input placeholder="Stream 5" data-index="4" class="streamfield deletable" type="text" name="s4" id="field4" {{ 'value="%s"' % streams[4] if nstreams > 4 else '' }}/><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s5">Stream 6</label--><input placeholder="Stream 6" data-index="5" class="streamfield deletable" type="text" name="s5" id="field5"  {{ 'value="%s"' % streams[5] if nstreams > 5 else '' }}/><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s6">Stream 7</label--><input placeholder="Stream 7" data-index="6" class="streamfield deletable" type="text" name="s6" id="field6" {{ 'value="%s"' % streams[6] if nstreams > 6 else '' }} /><span class="streamstatusicon"></span></div>
+					
+					<div class=streamfieldcontainer><!--label for="s7">Stream 8</label--><input placeholder="Stream 8" data-index="7" class="streamfield deletable" type="text" name="s7" id="field7" {{ 'value="%s"' % streams[7] if nstreams > 7 else '' }} /><span class="streamstatusicon"></span></div>
+					
+					<div class='layoutselectors clearfix'>
+					
+					<div class="layoutgroup" data-streams="1">
+					
+					<div class="layoutselector" data-index="0" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="0" data-index="0" type="radio" checked="checked"/></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:103px;height:138px;left:0px;top:0px;text-align:center;line-height:138px;">1</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="1" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="1" data-index="1" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:82px;left:0px;top:0px;text-align:center;line-height:82px;">1</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:138px;height:54px;left:0px;top:84px;text-align:center;line-height:54px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="2" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="2" data-index="2" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:138px;left:0px;top:0px;text-align:center;line-height:138px;">1</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="2">
+					
+					<div class="layoutselector" data-index="3" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="3" data-index="3" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:103px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:103px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">2</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="4" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="4" data-index="4" type="radio" /></div>
+						<div style="width:140px;height:139px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:79px;left:0px;top:0px;text-align:center;line-height:79px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:79px;left:70px;top:0px;text-align:center;line-height:79px;">2</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:56px;left:0px;top:81px;text-align:center;line-height:56px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:56px;left:70px;top:81px;text-align:center;line-height:56px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="5" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="5" data-index="5" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">2</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="3">
+					
+					<div class="layoutselector" data-index="6" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="6" data-index="6" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:103px;height:89px;left:0px;top:0px;text-align:center;line-height:89px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:49px;height:47px;left:0px;top:91px;text-align:center;line-height:47px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:47px;left:51px;top:91px;text-align:center;line-height:47px;">3</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="7" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="7" data-index="7" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:70px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">3</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="8" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="8" data-index="8" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:82px;left:0px;top:0px;text-align:center;line-height:82px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:54px;left:0px;top:84px;text-align:center;line-height:54px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:54px;left:70px;top:84px;text-align:center;line-height:54px;">3</div>
+							
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="9" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="9" data-index="9" type="radio" /></div>
+						<div style="width:140px;height:139px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:45px;left:0px;top:0px;text-align:center;line-height:45px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:44px;left:0px;top:47px;text-align:center;line-height:44px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:44px;left:0px;top:93px;text-align:center;line-height:44px;">3</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="4">
+					
+					<div class="layoutselector" data-index="10" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="10" data-index="10" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:103px;height:89px;left:0px;top:0px;text-align:center;line-height:89px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:47px;left:0px;top:91px;text-align:center;line-height:47px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:47px;left:46px;top:91px;text-align:center;line-height:47px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:47px;left:93px;top:91px;text-align:center;line-height:47px;">4</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:89px;left:105px;top:0px;text-align:center;line-height:89px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:89px;left:105px;top:0px;text-align:center;line-height:89px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:89px;left:105px;top:0px;text-align:center;line-height:89px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:89px;left:105px;top:0px;text-align:center;line-height:89px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="11" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="11" data-index="11" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:49px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:68px;left:51px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:49px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:68px;left:51px;top:70px;text-align:center;line-height:68px;">4</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:138px;left:105px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="12" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="12" data-index="12" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:70px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">4</div>
+							
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="13" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="13" data-index="13" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:33px;left:0px;top:0px;text-align:center;line-height:33px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:33px;left:0px;top:35px;text-align:center;line-height:33px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:33px;left:0px;top:70px;text-align:center;line-height:33px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:138px;height:33px;left:0px;top:105px;text-align:center;line-height:33px;">4</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="5">
+					
+					<div class="layoutselector" data-index="14" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="14" data-index="14" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:49px;height:82px;left:0px;top:0px;text-align:center;line-height:82px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:82px;left:51px;top:0px;text-align:center;line-height:82px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:54px;left:0px;top:84px;text-align:center;line-height:54px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:54px;left:46px;top:84px;text-align:center;line-height:54px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:54px;left:93px;top:84px;text-align:center;line-height:54px;">5</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:82px;left:105px;top:0px;text-align:center;line-height:82px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:82px;left:105px;top:0px;text-align:center;line-height:82px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:82px;left:105px;top:0px;text-align:center;line-height:82px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:82px;left:105px;top:0px;text-align:center;line-height:82px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:82px;left:105px;top:0px;text-align:center;line-height:82px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="15" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="15" data-index="15" type="radio" /></div>
+						<div style="width:139px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:68px;left:46px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:93px;top:0px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:93px;top:70px;text-align:center;line-height:68px;">5</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="16" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="16" data-index="16" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:82px;left:0px;top:0px;text-align:center;line-height:82px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:82px;left:70px;top:0px;text-align:center;line-height:82px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:54px;left:0px;top:84px;text-align:center;line-height:54px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:54px;left:46px;top:84px;text-align:center;line-height:54px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:54px;left:93px;top:84px;text-align:center;line-height:54px;">5</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="6">
+					
+					<div class="layoutselector" data-index="17" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="17" data-index="17" type="radio" /></div>
+						<div style="width:139px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:44px;left:0px;top:0px;text-align:center;line-height:44px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:44px;left:53px;top:0px;text-align:center;line-height:44px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:45px;left:0px;top:46px;text-align:center;line-height:45px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:45px;left:53px;top:46px;text-align:center;line-height:45px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:44px;left:0px;top:93px;text-align:center;line-height:44px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:51px;height:44px;left:53px;top:93px;text-align:center;line-height:44px;">6</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:31px;height:138px;left:106px;top:0px;text-align:center;line-height:138px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="18" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="18" data-index="18" type="radio" /></div>
+						<div style="width:139px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:68px;left:46px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:93px;top:0px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:68px;left:46px;top:70px;text-align:center;line-height:68px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:68px;left:93px;top:70px;text-align:center;line-height:68px;">6</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="7">
+					
+					<div class="layoutselector" data-index="19" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="19" data-index="19" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:35px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:70px;top:0px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:105px;top:0px;text-align:center;line-height:68px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">7</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="20" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="20" data-index="20" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:68px;height:68px;left:35px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:44px;left:0px;top:0px;text-align:center;line-height:44px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:45px;left:0px;top:46px;text-align:center;line-height:45px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:44px;left:0px;top:93px;text-align:center;line-height:44px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:44px;left:105px;top:0px;text-align:center;line-height:44px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:45px;left:105px;top:46px;text-align:center;line-height:45px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:44px;left:105px;top:93px;text-align:center;line-height:44px;">7</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:68px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="21" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="21" data-index="21" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:82px;left:0px;top:0px;text-align:center;line-height:82px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:82px;left:46px;top:0px;text-align:center;line-height:82px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:82px;left:93px;top:0px;text-align:center;line-height:82px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:54px;left:0px;top:84px;text-align:center;line-height:54px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:54px;left:35px;top:84px;text-align:center;line-height:54px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:54px;left:70px;top:84px;text-align:center;line-height:54px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:54px;left:105px;top:84px;text-align:center;line-height:54px;">7</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					<div class="layoutgroup" data-streams="8">
+					
+					<div class="layoutselector" data-index="22" style="margin-right:10px;margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="22" data-index="22" type="radio" /></div>
+						<div style="width:139px;height:139px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:44px;left:0px;top:0px;text-align:center;line-height:44px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:44px;left:46px;top:0px;text-align:center;line-height:44px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:44px;left:93px;top:0px;text-align:center;line-height:44px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:45px;left:0px;top:46px;text-align:center;line-height:45px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:45px;left:46px;top:46px;text-align:center;line-height:45px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:45px;left:93px;top:46px;text-align:center;line-height:45px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:44px;height:44px;left:0px;top:93px;text-align:center;line-height:44px;">7</div>
+							
+							<div class="streamthumb" style="position:absolute;width:45px;height:44px;left:46px;top:93px;text-align:center;line-height:44px;">8</div>
+							
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+							<div class="chatthumb" style="position:absolute;width:44px;height:44px;left:93px;top:93px;text-align:center;line-height:44px;">C</div>
+							
+						</div>
+					</div>
+					
+					<div class="layoutselector" data-index="23" style="margin-bottom:10px;">
+						<div style="text-align:center;margin-bottom:4px;margin-top:4px;"><input name="layout" value="23" data-index="23" type="radio" /></div>
+						<div style="width:140px;height:140px;position:relative;">
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:0px;top:0px;text-align:center;line-height:68px;">1</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:35px;top:0px;text-align:center;line-height:68px;">2</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:70px;top:0px;text-align:center;line-height:68px;">3</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:105px;top:0px;text-align:center;line-height:68px;">4</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:0px;top:70px;text-align:center;line-height:68px;">5</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:35px;top:70px;text-align:center;line-height:68px;">6</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:70px;top:70px;text-align:center;line-height:68px;">7</div>
+							
+							<div class="streamthumb" style="position:absolute;width:33px;height:68px;left:105px;top:70px;text-align:center;line-height:68px;">8</div>
+							
+							
+						</div>
+					</div>
+					
+					</div>
+					
+					</div>
+					<div class='formcaption'>Multistream currently only supports <a href="http://twitch.tv">Twitch</a> streams.</div>
+				</div>
+				<div id="featured" class='channellist clearfix'>
+					<div id='quickpicks'>
+						<!--<div id='live-filters' class='filter-group floatright'>
+							<button data-filter-value=".live">Live</button>
+							<button data-filter-value="*">All</button>
+						</div>-->
+						<!--<div id='sort-filters' class='filter-group floatright'>
+							<button data-sort-value="name">Alphabetical</button>
+							<button data-sort-value="live">Live</button>
+							<button data-sort-value="random">Shuffle</button>
+						</div>-->
+						<div id='tag-filters' class='filter-group'>
+                            <!-- filters -->
+							<button data-filter-value=".tag-community">{{ community_name }} Community</button>
+							<button data-filter-value=".tag-staff-picks">Staff Picks</button>
+							<button data-filter-value="*">All</button>
+						</div>
+					</div>
+					<div id="featuredlist">
+					<div class='grid-sizer'></div>
+					
+                        {% for comstream in community_streams %}
+                        <!-- community/staff picks -->
+						<div class="channel tag-community" rel="{{comstream['name']}}">
+							<div class=channelimage style="background-image: url('{{comstream['preview']}}');">
+								<div class=channelcaption>
+									<div class=channelname>{{comstream['name']}}</div>
+									
+								</div>
+							</div>
+						</div>
+                        {% endfor %}
+					
+					</div>
+				</div>
+				<!--div id="following" class="clearfix">
+					<div class='authenticate twitch-widget not-authenticated'>
+						<div>Connect with Twitch to see your followed channels.</div>
+						<br />
+						<img class="connect-twitch" src="/static/images/connect-twitch.png" />
+					</div>
+					<div id="followedlist" class='channellist twitch-widget authenticated'>
+						<div class='loading'>Loading...</div>
+					</div>
+				</div>
+			</div-->
+		<div id="submitbuttoncontainer" class='clearfix'><button id='clearbutton'>Clear</button><button id='cancelbutton'>Cancel</button><button type="submit" value="Watch Streams">Watch Streams</button></div>
+		<div style="clear:both;"></div>
+        <!-- footer -->
+        {% include 'web/footer.tmpl' %}
+		</form>
+	</div>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    absolute_center($("#helpbox"));
-    if ({{ nstreams }} == 0) {
-        hide_chat();
-        $("#helpbox").css('display','block');
-    }
-
-    {% for stream in streams %}
-    streams.push("{{ stream }}");
-    {% endfor %}
-
-    // Setup tabs
-    chat_tabs = $("#chatbox").tabs();
-
-    // Do this after all the jqueryui setup.
-    optimize_size({{ nstreams }});
-    setTimeout(function(){
-        optimize_size({{ nstreams }})
-        }, 500);
-});
-$(window).resize(function() {
-    absolute_center($("#helpbox"));
-    optimize_size(-1);
-});
-</script>
-</head>
-<body>
-<div id="wrapper">
-<div id="streams">
-    {% for stream in streams %}
-
-    {% if not is_test %}
-    <iframe id="embed_{{ stream }}" src="http://player.twitch.tv/?muted=true&channel={{ stream }}" class="stream" allowfullscreen="true"></iframe>
-    {% else %}
-    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://beta.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /><param name="wmode" value="transparent" /></object>
-    {% endif %}
-
-    {% endfor %}
-</div>
-
-<div id="chatbox">
-<ul id="tablist">
-{% for stream in unique_streams %}
-<li><a href="#chat-{{ stream }}">{{ stream }}</a></li>
-{% endfor %}
-</ul>
-{% for stream in unique_streams %}
-<div id="chat-{{ stream }}" class="stream_chat">
-<iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
-</div>
-{% endfor %}
-</div>
-
-
-<div id="helpbox">
-<h1>MultiTwitch.tv</h1>
-<div id="helptext">
-Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="/gunnermaniac3/narcissawright">multitwitch.tv/gunnermaniac3/narcissawright</a>. MultiTwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. For the curious, the source of this page is available at <a href="https://github.com/bhamrick/multitwitch">github.com/bhamrick/multitwitch</a>. Happy streamwatching!
-</div>
-
-<div id="credits">
-Created by Brian Hamrick
-</div>
-</div>
-
-<div id="change_streams" class="optionbox">
-    <div id="streamlist">
-    {% for stream in streams %}
-    <div class="streamlist_item">
-    <input type="checkbox" checked=true class="check" />
-    <span>{{ stream }}</span>
-    </div>
-    {% endfor %}
-    <div class="streamlist_item">
-    <input type="text" class="stream_name" onkeyup="stream_item_keyup(event)" />
-    </div>
-    </div>
-
-    <div class="fullwidth centering">
-        <a onclick="add_stream_item()">Add Stream</a>
-    </div>
-
-    <div class="fullwidth">
-    <button type="button" class="left" onclick="close_change_streams(false)">Cancel</button>
-    <button type="button" class="right" onclick="close_change_streams(true)">Ok</button>
-    <div class="clear"></div>
-    </div>
-</div>
-
-<div id="bottom_right_bar">
-<a onclick="change_streams()">Change Streams</a>
-|
-<a onclick="toggle_chat()">Toggle Chat</a>
-</div>
-
-</div>
-</body>
+		</div>
+	</body>
 </html>
