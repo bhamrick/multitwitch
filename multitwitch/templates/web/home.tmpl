@@ -29,7 +29,7 @@ $(document).ready(function() {
     }
 
     {% for stream in streams %}
-    streams.push("{{ stream }}");
+    streams.push("{{ stream|e }}");
     {% endfor %}
 
     // Setup tabs
@@ -53,9 +53,9 @@ $(window).resize(function() {
     {% for stream in streams %}
 
     {% if not is_test %}
-    <iframe id="embed_{{ stream }}" src="http://player.twitch.tv/?muted=true&channel={{ stream }}" class="stream" allowfullscreen="true"></iframe>
+    <iframe id="embed_{{ stream|e }}" src="http://player.twitch.tv/?muted=true&channel={{ stream|e }}" class="stream" allowfullscreen="true"></iframe>
     {% else %}
-    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream }}" class="stream" data="http://beta.twitch.tv/widgets/live_embed_player.swf?channel={{ stream }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream }}&auto_play=true&start_volume=0" /><param name="wmode" value="transparent" /></object>
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_{{ stream|e }}" class="stream" data="http://beta.twitch.tv/widgets/live_embed_player.swf?channel={{ stream|e }}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{ stream|e }}&auto_play=true&start_volume=0" /><param name="wmode" value="transparent" /></object>
     {% endif %}
 
     {% endfor %}
@@ -64,12 +64,12 @@ $(window).resize(function() {
 <div id="chatbox">
 <ul id="tablist">
 {% for stream in unique_streams %}
-<li><a href="#chat-{{ stream }}">{{ stream }}</a></li>
+<li><a href="#chat-{{ stream|e }}">{{ stream|e }}</a></li>
 {% endfor %}
 </ul>
 {% for stream in unique_streams %}
-<div id="chat-{{ stream }}" class="stream_chat">
-<iframe frameborder="0" scrolling="no" id="chat-{{ stream }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
+<div id="chat-{{ stream|e }}" class="stream_chat">
+<iframe frameborder="0" scrolling="no" id="chat-{{ stream|e }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream|e }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
 </div>
 {% endfor %}
 </div>
@@ -91,7 +91,7 @@ Created by Brian Hamrick
     {% for stream in streams %}
     <div class="streamlist_item">
     <input type="checkbox" checked=true class="check" />
-    <span>{{ stream }}</span>
+    <span>{{ stream|e }}</span>
     </div>
     {% endfor %}
     <div class="streamlist_item">
