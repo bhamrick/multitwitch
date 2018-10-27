@@ -8,6 +8,8 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
+    'jinja2',
+    'simplejson',
     'transaction',
     'pyramid_tm',
     'pyramid_debugtoolbar',
