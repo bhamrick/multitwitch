@@ -98,6 +98,17 @@ iframe {
     width: 127px;
 }
 
+#dialog_add_stream {
+    text-align: center;
+}
+
+#dialog_add_stream > input[type=text] {
+    padding: 0.75em 1em;
+    border: 1px;
+    border-radius: 3px;
+    font-style: italic;
+}
+
 .streamlist_item .stream_name {
     width: 123px;
 }

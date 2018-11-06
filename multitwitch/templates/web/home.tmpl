@@ -40,6 +40,30 @@ $(document).ready(function() {
     setTimeout(function(){
         optimize_size({{ nstreams }})
         }, 500);
+
+    var dialogBox;
+
+    function addStream(){
+        var newstream = dialogBox.find("input[name=newstream]");
+        streams.push(newstream.val());
+        window.location.href = '/' + streams.join('/');
+        return true;
+    }
+
+    dialogBox = $("#dialog_add_stream").dialog({
+        autoOpen: false,
+        modal: true,
+        buttons: {
+            "Add Stream": addStream,
+            Cancel: function() {
+                dialogBox.dialog("close");
+            }
+        }
+    });
+
+    $("#add_stream").on("click", function(evt){
+        dialogBox.dialog("open");
+    });
 });
 $(window).resize(function() {
     absolute_center($("#helpbox"));
@@ -57,11 +81,16 @@ $(window).resize(function() {
     {% endfor %}
 </div>
 
+<div id="dialog_add_stream" title="Add Stream">
+    <input type="text" name="newstream" value="" placeholder="put the stream you want..." />
+</div>
+
 <div id="chatbox">
 <ul id="tablist">
 {% for stream in unique_streams %}
 <li><a href="#chat-{{ stream|e }}">{{ stream|e }}</a></li>
 {% endfor %}
+<li class="ui-state-default ui-corner-top"><a id="add_stream">+</a></li>
 </ul>
 {% for stream in unique_streams %}
 <div id="chat-{{ stream|e }}" class="stream_chat">
