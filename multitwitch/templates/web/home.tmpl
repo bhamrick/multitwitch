@@ -44,8 +44,8 @@ $(document).ready(function() {
     var dialogBox;
 
     function addStream(){
-        var newstream = dialogBox.find("input[name=newstream]");
-        streams.push(newstream.val());
+        var newstream = dialogBox.find("input[name=newstream]").val() || "";
+        streams = streams.concat(newstream.split(/,|\||\/|\\/));
         window.location.href = '/' + streams.join('/');
         return true;
     }
@@ -53,6 +53,7 @@ $(document).ready(function() {
     dialogBox = $("#dialog_add_stream").dialog({
         autoOpen: false,
         modal: true,
+        width: 500,
         buttons: {
             "Add Stream": addStream,
             Cancel: function() {
@@ -83,6 +84,7 @@ $(window).resize(function() {
 
 <div id="dialog_add_stream" title="Add Stream">
     <input type="text" name="newstream" value="" placeholder="put the stream you want..." />
+    <p>You can use divisor for example: <br><u><i>blizzard,saddummy,anybody</i></u> or <u><i>blizzard/saddummy/anybody</i></u></p>
 </div>
 
 <div id="chatbox">
