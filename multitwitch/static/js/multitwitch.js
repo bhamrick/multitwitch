@@ -196,3 +196,14 @@ function close_change_streams(apply) {
     $("#change_streams").hide();
     update_stream_list();
 }
+
+$(document).ready(function() {
+  if (!URLSearchParams) {
+    return;
+  }
+    
+  var searchParams = new URLSearchParams(window.location.search);  
+  if (searchParams.get('chat') === '0') {
+      hide_chat();
+  }
+});
