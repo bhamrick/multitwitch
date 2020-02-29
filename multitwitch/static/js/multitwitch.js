@@ -1,3 +1,4 @@
+var dark_mode = true;
 var chat_hidden = false;
 var num_streams = -1;
 var streams = new Array();
@@ -101,6 +102,42 @@ function toggle_chat() {
         show_chat();
     } else {
         hide_chat();
+    }
+}
+
+function enable_dark_mode() {
+    for (var i = 0; i < streams.length; i++) {
+        var stream = streams[i];
+        var embed = $("#chat-" + stream + "-embed");
+        var src = embed.attr("src");
+        if (!src.endsWith("?darkpopout")) {
+            embed.attr("src", src + "?darkpopout");
+        }
+    }
+    dark_mode = true;
+}
+
+function disable_dark_mode() {
+    for (var i = 0; i < streams.length; i++) {
+        var stream = streams[i];
+        var embed = $("#chat-" + stream + "-embed");
+        console.log(embed);
+        var src = embed.attr("src");
+        console.log(src);
+        if (src.endsWith("?darkpopout")) {
+            embed.attr("src", src.slice(0, -11));
+        }
+    }
+    dark_mode = false;
+}
+
+function toggle_dark_mode() {
+    if (dark_mode) {
+        console.log("disabling");
+        disable_dark_mode();
+    } else {
+        console.log("enabling");
+        enable_dark_mode();
     }
 }
 
