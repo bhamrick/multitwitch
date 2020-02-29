@@ -65,7 +65,7 @@ $(window).resize(function() {
 </ul>
 {% for stream in unique_streams %}
 <div id="chat-{{ stream|e }}" class="stream_chat">
-<iframe frameborder="0" scrolling="no" id="chat-{{ stream|e }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream|e }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
+<iframe frameborder="0" scrolling="no" id="chat-{{ stream|e }}-embed" src="https://twitch.tv/embed/{{ stream|e }}/chat?darkpopout" height="100%" width="100%"></iframe>
 </div>
 {% endfor %}
 </div>
@@ -110,6 +110,8 @@ Created by Brian Hamrick
 <a onclick="change_streams()">Change Streams</a>
 |
 <a onclick="toggle_chat()">Toggle Chat</a>
+|
+<a onclick="toggle_dark_mode()">Toggle Dark Mode</a>
 </div>
 
 </div>
