@@ -125,11 +125,11 @@ function stream_item_keyup(e) {
 }
 
 function stream_object(name) {
-    return $('<iframe id="embed_' + name + '" src="http://player.twitch.tv/?muted=true&channel=' + name + '" class="stream" allowfullscreen="true"></iframe>');
+    return $('<iframe id="embed_' + name + '" src="http://player.twitch.tv/?muted=true&channel=' + name + '&parent=multitwitch.tv" class="stream" allowfullscreen="true"></iframe>');
 }
 
 function chat_object(name) {
-    return $('<div id="chat-' + name + '" class="stream_chat"><iframe frameborder="0" scrolling="no" id="chat-' + name + '-embed" src="http://twitch.tv/chat/embed?channel=' + name + '&popout_chat=true" height="100%" width="100%"></iframe></div>');
+    return $('<div id="chat-' + name + '" class="stream_chat"><iframe frameborder="0" scrolling="no" id="chat-' + name + '-embed" src="http://twitch.tv/chat/embed?channel=' + name + '&popout_chat=true&parent=multitwitch.tv" height="100%" width="100%"></iframe></div>');
 }
 
 function chat_tab_object(name) {

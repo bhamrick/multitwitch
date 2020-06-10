@@ -52,7 +52,7 @@ $(window).resize(function() {
 <div id="streams">
     {% for stream in streams %}
 
-    <iframe id="embed_{{ stream|e }}" src="http://player.twitch.tv/?muted=true&channel={{ stream|e }}" class="stream" allowfullscreen="true"></iframe>
+    <iframe id="embed_{{ stream|e }}" src="http://player.twitch.tv/?muted=true&channel={{ stream|e }}&parent=multitwitch.tv" class="stream" allowfullscreen="true"></iframe>
 
     {% endfor %}
 </div>
@@ -65,7 +65,7 @@ $(window).resize(function() {
 </ul>
 {% for stream in unique_streams %}
 <div id="chat-{{ stream|e }}" class="stream_chat">
-<iframe frameborder="0" scrolling="no" id="chat-{{ stream|e }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream|e }}&amp;popout_chat=true" height="100%" width="100%"></iframe>
+<iframe frameborder="0" scrolling="no" id="chat-{{ stream|e }}-embed" src="http://twitch.tv/chat/embed?channel={{ stream|e }}&amp;popout_chat=true&amp;parent=multitwitch.tv" height="100%" width="100%"></iframe>
 </div>
 {% endfor %}
 </div>
