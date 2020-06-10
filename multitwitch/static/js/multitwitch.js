@@ -129,7 +129,7 @@ function stream_object(name) {
 }
 
 function chat_object(name) {
-    return $('<div id="chat-' + name + '" class="stream_chat"><iframe frameborder="0" scrolling="no" id="chat-' + name + '-embed" src="https://twitch.tv/chat/embed?channel=' + name + '&popout_chat=true&parent=multitwitch.tv&parent=www.multitwitch.tv" height="100%" width="100%"></iframe></div>');
+    return $('<div id="chat-' + name + '" class="stream_chat"><iframe frameborder="0" scrolling="no" id="chat-' + name + '-embed" src="https://twitch.tv/embed/' + name + '/chat?parent=multitwitch.tv&parent=www.multitwitch.tv" height="100%" width="100%"></iframe></div>');
 }
 
 function chat_tab_object(name) {
