@@ -5,6 +5,7 @@ class WebView:
     @web(template="web/home.tmpl")
     def home(request):
         streams = request.matchdict['streams']
+        darkmode = 'darkmode' in request.params
         uniq_streams = []
         for s in streams:
             if s not in uniq_streams:
@@ -12,7 +13,8 @@ class WebView:
         return {'project' : 'multitwitch',
                 'streams' : streams,
                 'unique_streams' : uniq_streams,
-                'nstreams' : len(streams)}
+                'nstreams' : len(streams),
+                'darkmode' : darkmode}
 
     @staticmethod
     def favicon(request):
